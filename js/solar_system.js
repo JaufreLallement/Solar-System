@@ -1,10 +1,11 @@
 centerScroll();
 
 SELECTED_OBJ = null;
+OPENED_DESC = null;
 
 /**
  * This function centers the screen when the page is opened
- * @return : return to clear the variables
+ * @return : return to clear variables
  */
 function centerScroll() {
 	var scroll = (document.getElementById('sun').getBoundingClientRect().left - document.body.getBoundingClientRect().left) - window.innerWidth / 2 + document.getElementById('sun').offsetWidth / 2;
@@ -14,19 +15,57 @@ function centerScroll() {
 
 /**
 *	This function updates the lock position to the position of the selected object depending on its coordinates
-*	@param {object} obj : obj on which lock the position of the window
 *	@return {boolean} : true if the screen is locked on an object, else false
 */
-function updateLock(obj) {
-	if (obj) {
-		var x = SELECTED_OBJ.offset().left - ($(window).width() / 2) + (SELECTED_OBJ.width() / 2);
-		var y = SELECTED_OBJ.offset().top - ($(window).height() / 2)  + (SELECTED_OBJ.height() / 2);
+function updateLock() {
+	if (SELECTED_OBJ) {
+		var x = (SELECTED_OBJ.getBoundingClientRect().left - document.body.getBoundingClientRect().left) - (window.innerWidth / 2) + (SELECTED_OBJ.offsetWidth / 2);
+		var y = (SELECTED_OBJ.getBoundingClientRect().top - document.body.getBoundingClientRect().top) - (window.innerHeight / 2) + (SELECTED_OBJ.offsetHeight / 2);
 		window.scrollTo(x, y);
 		return true;
 	} else {
-		SELECTED_OBJ = null;
 		return false;
 	}
+}
+
+/**
+ * This function updates the interface and the classes when the user unfollow an object
+ * @return : return to clear variables
+ */
+function unfollowInterfaceUpdate() {
+	if (document.getElementsByClassName('unfollow')[0]) {
+		document.getElementsByClassName('unfollow')[0].innerHTML = 'Suivre';
+		document.getElementsByClassName('unfollow')[0].className = document.getElementsByClassName('unfollow')[0].className.replace('unfollow', 'follow');
+	}
+	return;
+}
+
+/**
+ * This function updates the interface and the classes when the user follow an object
+ * @return : return to clear variables
+ */
+function followInterfaceUpdate() {
+	document.getElementById(SELECTED_OBJ.id + '-follow').innerHTML = 'Ne plus suivre';
+	document.getElementById(SELECTED_OBJ.id + '-follow').className = document.getElementById(SELECTED_OBJ.id + '-follow').className.replace('follow', 'unfollow');
+	return;
+}
+
+/**
+ * This function updates the classes for concerned objects
+ * @param {boolean} follow : true if an object is followed, else false
+ * @param {object} obj : obj on which lock the position of the window
+ * @return : return to clear variables
+ */
+function updateFollowClasses(follow, obj) {
+	if (follow) {
+		SELECTED_OBJ = obj;
+		unfollowInterfaceUpdate();
+		followInterfaceUpdate();
+	} else {
+		SELECTED_OBJ = null;
+		unfollowInterfaceUpdate();
+	}
+	return;
 }
 
 
@@ -140,9 +179,13 @@ function displayTransitMsg(obj_id) {
 			var obj_x = getObjCoord(obj_id)[0],
 				obj_y = getObjCoord(obj_id)[1];
 			$(obj_alert).offset({top: obj_y - $(obj_alert).height() / 2, left: obj_x - $(obj_alert).width() / 2});
-			$(obj_alert).fadeIn(400);
-		} else {	
-			$(obj_alert).fadeOut(400);
+			if (document.getElementById(obj_alert.replace('#', '')).className.indexOf('faded-in') === -1) {
+				fadeIn(obj_alert.replace('#', ''));
+			}
+		} else {
+			if (document.getElementById(obj_alert.replace('#', '')).className.indexOf('faded-out') === -1) {
+				fadeOut(obj_alert.replace('#', ''));
+			}
 		}
 	}
 	return;
@@ -158,9 +201,46 @@ function manageTransitMsg() {
 	return;
 }
 
+/**
+ * This function displays the element in parameters with animation and attributes the element to global variabl OPENED_DESC. Combination with CSS transition.
+ * @param {String} obj_id : id of the object to display
+ * @return {boolean} : true if the id in parameter corresponds to an existing object, else false
+ */
+function fadeIn(obj_id) {
+	if (document.getElementById(obj_id)) {
+		var obj_classes = document.getElementById(obj_id).className;
+		if (obj_classes.indexOf('desc') > -1) {
+			if (OPENED_DESC != document.getElementById(obj_id)) {
+				OPENED_DESC = document.getElementById(obj_id);
+			}
+		}
+		document.getElementById(obj_id).className = obj_classes.replace('faded-out', 'faded-in');
+		return true;
+	} else {
+		window.alert('Impossible de trouver l\'objet correspondant à l\'identifiant ' + obj_id + '!');
+		return false;
+	}
+}
+
+/**
+ * This function hide the opened description
+ * @return {boolean} : true if the object exists, else false
+ */
+function fadeOut(obj_id) {
+	if (document.getElementById(obj_id)) {
+		var obj_classes = document.getElementById(obj_id).className;
+		if (OPENED_DESC == document.getElementById(obj_id)) {
+			OPENED_DESC = null;
+		}
+		document.getElementById(obj_id).className = obj_classes.replace('faded-in', 'faded-out');
+		return true;
+	} else {
+		console.log('coucou')
+		return false;
+	}
+}
+
 $(document).ready(function() {
-
-
 	$(document).on('mousedown', function(e) {
 	    $(document).on('mousemove', function(evt) {
 	        window.scrollTo(e.pageX - evt.clientX ,e.pageY - evt.clientY);
@@ -171,29 +251,23 @@ $(document).ready(function() {
 
 	$(document).on('click', '.object, .object-link, .asteroid-belt', function(e) {
 		e.stopPropagation();
-		var obj = $(this).attr('id'), // Sauvegarde de l'id de l'objet cliqué
-			obj_id = obj.substring(0, obj.lastIndexOf('-link') === -1 ? obj.length : obj.lastIndexOf('-link')); // Si l'id comprend la substring '-link', on la retire
-		$('.desc').stop(true, true).fadeOut(500); // Fermeture des descriptions précédemment ouvertes
-		$('#' + obj_id + '-desc').stop(true, true).fadeIn(500); // Affichage de la description correspondant à l'objet cliqué
+		var obj = $(this).attr('id'),
+			obj_id = obj.substring(0, obj.lastIndexOf('-link') === -1 ? obj.length : obj.lastIndexOf('-link'));
+		if (OPENED_DESC) fadeOut(OPENED_DESC.id);
+		fadeIn(obj_id + '-desc');
 	})
 
 	.on('click', '.close', function() {
-		$('.desc').stop(true, true).fadeOut(500); // Fermeture des descriptions précédemment ouvertes
+		fadeOut(OPENED_DESC.id);
 	})
 
 	.on('click', '.follow', function() {
 		var obj_id = $(this).attr('id').replace('-follow', ''); // On récupère l'id de l'objet en retirant la substring en trop
-
-		SELECTED_OBJ = $('#' + obj_id); // On met à jour l'objet sélectionné à suivre
-
-		// Mise à jour de l'affichage
-		$('.unfollow').removeClass('unfollow').addClass('follow').html('Suivre'); 
-		$(this).removeClass('follow').addClass('unfollow').html('Ne plus suivre');
+		updateFollowClasses(true, document.getElementById(obj_id));
 	})
 
 	.on('click', '.unfollow, #unfollow-all', function() {
-		SELECTED_OBJ = null; // Mise à jour de l'objet sélectionné
-		$('.unfollow').removeClass('unfollow').addClass('follow').html('Suivre'); // Mise à jour de l'affichage
+		updateFollowClasses(false);
 	});
 
 	// Gestion de la date
