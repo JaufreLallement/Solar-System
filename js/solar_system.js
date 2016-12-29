@@ -1,10 +1,25 @@
-centerScroll();
+				/* -------------------------------------------------------------------------------------------------------------------- */
+				/* ------------------------------------------ JavaScript for Solarys project ------------------------------------------ */
+				/* -------------------------------------------------------------------------------------------------------------------- */
 
+
+centerScroll(); /** @see solar_system.js#centerScroll() : 21 */
+
+/**
+ * Global variable : current selected object. Corresponds to the object which the user choose to follow, exemple : Earth, Moon, Jupiter, etc.
+ * {Object} : DOM element
+ */
 SELECTED_OBJ = null;
+
+/**
+ * Global variable : current opened description. Corresponds to the description of an object of the solar system which is currently displayed.
+ * Only one can be displayed at a time.
+ * {Object} : DOM element
+ */
 OPENED_DESC = null;
 
 /**
- * This function centers the screen when the page is opened
+ * This function centers the scroll when the page is loaded
  * @return : return to clear variables
  */
 function centerScroll() {
@@ -29,43 +44,39 @@ function updateLock() {
 }
 
 /**
- * This function updates the interface and the classes when the user unfollow an object
- * @return : return to clear variables
+ * This function change the class and the HTML content of the following "button" when the corresponding object is folowed
+ * @param {Object} element : DOM element which must be updated
+ * @param {boolean} state : true if the corresponding object is followed, false if it is unfollowed
  */
-function unfollowInterfaceUpdate() {
-	if (document.getElementsByClassName('unfollow')[0]) {
-		document.getElementsByClassName('unfollow')[0].innerHTML = 'Suivre';
-		document.getElementsByClassName('unfollow')[0].className = document.getElementsByClassName('unfollow')[0].className.replace('unfollow', 'follow');
-	}
-	return;
-}
-
-/**
- * This function updates the interface and the classes when the user follow an object
- * @return : return to clear variables
- */
-function followInterfaceUpdate() {
-	document.getElementById(SELECTED_OBJ.id + '-follow').innerHTML = 'Ne plus suivre';
-	document.getElementById(SELECTED_OBJ.id + '-follow').className = document.getElementById(SELECTED_OBJ.id + '-follow').className.replace('follow', 'unfollow');
-	return;
+function toggleFollowInterface(element, state) {
+	element.innerHTML = (state) ? 'Ne plus suivre' : 'Suivre';
+	element.className = (state) ? element.className.replace('follow', 'unfollow') : element.className.replace('unfollow', 'follow');
 }
 
 /**
  * This function updates the classes for concerned objects
- * @param {boolean} follow : true if an object is followed, else false
- * @param {object} obj : obj on which lock the position of the window
- * @return : return to clear variables
+ * @param {String} obj_id : id of the object on which lock the position of the window
+ * @return {boolean} : true if the id corresponds to an existing element, else false
  */
-function updateFollowClasses(follow, obj) {
-	if (follow) {
-		SELECTED_OBJ = obj;
-		unfollowInterfaceUpdate();
-		followInterfaceUpdate();
+function updateFollow(obj_id) {
+	var element = document.getElementById(obj_id);
+	if (element) {
+		var element_f = document.getElementById(obj_id + '-follow'); 
+		if (element_f.className.indexOf('unfollow') === -1) {
+			var previous_f = document.getElementsByClassName('unfollow')[0];
+			if (previous_f) {
+				toggleFollowInterface(previous_f, false); /** @see solar_system.js#toggleFollowInterface() : 46 */
+			}
+			toggleFollowInterface(element_f, true); /** @see solar_system.js#toggleFollowInterface() : 46 */
+			SELECTED_OBJ = element;
+		} else {
+			toggleFollowInterface(element_f, false); /** @see solar_system.js#toggleFollowInterface() : 46 */
+			SELECTED_OBJ = null;
+		}
+		return true;
 	} else {
-		SELECTED_OBJ = null;
-		unfollowInterfaceUpdate();
+		return false;
 	}
-	return;
 }
 
 
@@ -102,7 +113,7 @@ function getObjCoord(obj_id) {
 *	@return {int, int} obj_x, obj_y : coordinates of the corresponding vector
 */
 function getVectCoord(obj_id1, obj_id2) {
-	return [getObjCoord(obj_id2)[0] - getObjCoord(obj_id1)[0], getObjCoord(obj_id2)[1] - getObjCoord(obj_id1)[1]];
+	return [getObjCoord(obj_id2)[0] - getObjCoord(obj_id1)[0], getObjCoord(obj_id2)[1] - getObjCoord(obj_id1)[1]]; /** @see solar_system.js#getObjCoord() : 99 */
 }
 
 
@@ -112,7 +123,7 @@ function getVectCoord(obj_id1, obj_id2) {
 *	@return {int} norm : norm of the vector
 */
 function getVectNorm(obj_id1, obj_id2) {
-	return Math.sqrt(Math.pow(getVectCoord(obj_id1, obj_id2)[0], 2) + Math.pow(getVectCoord(obj_id1, obj_id2)[1], 2));
+	return Math.sqrt(Math.pow(getVectCoord(obj_id1, obj_id2)[0], 2) + Math.pow(getVectCoord(obj_id1, obj_id2)[1], 2)); /** @see solar_system.js#getVectCoord() : 111 */
 }
 
 
@@ -262,28 +273,24 @@ $(document).ready(function() {
 	})
 
 	.on('click', '.follow', function() {
-		var obj_id = $(this).attr('id').replace('-follow', ''); // On récupère l'id de l'objet en retirant la substring en trop
-		updateFollowClasses(true, document.getElementById(obj_id));
+		var obj_id = $(this).attr('id').replace('-follow', '');
+		updateFollow(obj_id);
 	})
 
 	.on('click', '.unfollow, #unfollow-all', function() {
-		updateFollowClasses(false);
+		if (SELECTED_OBJ) updateFollow(SELECTED_OBJ.id);
 	});
 
-	// Gestion de la date
 	var today = new Date();
 	displayDate(today);
-
 	setInterval(function() {
 		var day = displayDate(today);
 		today.setDate(day + 1);
 		displayDate(today);
 	}, 695.24);
 
-
-	// Gestion des Messages d'alertes liés aux événements astronomiques
 	setInterval(function() {
-		updateLock(SELECTED_OBJ); // Mise à jour du suivi de l'objet sélectionné
+		updateLock();
 		manageTransitMsg();
 	}, 0.001);
 	
