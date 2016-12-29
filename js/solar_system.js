@@ -55,6 +55,24 @@ function getYCentered (element) {
 }
 
 /**
+ * This function returns the x coordinates of the center of the element
+ * @param {Object} element : the element of which we want to know the x coordinate of its center
+ * @return {double} : x coordinate of the center of the element
+ */
+function getCenterXOfElement(element) {
+	return getLeft(element) + element.offsetWidth / 2;
+}
+
+/**
+ * This function returns the y coordinates of the center of the element
+ * @param {Object} element : the element of which we want to know the y coordinate of its center
+ * @return {double} : y coordinate of the center of the element
+ */
+function getCenterYOfElement(element) {
+	return getTop(element) + element.offsetHeight / 2;
+}
+
+/**
 *	This function updates the lock position to the position of the selected object depending on its coordinates
 *	@return {boolean} : true if the screen is locked on an object, else false
 */
@@ -127,9 +145,7 @@ function displayDate(date) {
 *	@return {int, int} obj_x, obj_y : coordinates of the given object
 */
 function getObjCoord(obj_id) {
-	var obj_id_left = document.getElementById(obj_id).getBoundingClientRect().left - document.body.getBoundingClientRect().left,
-		obj_id_top = document.getElementById(obj_id).getBoundingClientRect().top - document.body.getBoundingClientRect().top;
-	return [obj_id_left + document.getElementById(obj_id).offsetWidth / 2, obj_id_top + document.getElementById(obj_id).offsetHeight / 2];
+	return [getCenterXOfElement(document.getElementById(obj_id)), getCenterYOfElement(document.getElementById(obj_id))]; /** @see solar_system.js#getCenterXOfElement() + solar_system.js#getCenterYOfElement() */
 }
 
 
