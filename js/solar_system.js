@@ -3,7 +3,7 @@
 				/* -------------------------------------------------------------------------------------------------------------------- */
 
 
-centerScroll(); /** @see solar_system.js#centerScroll() : 21 */
+window.scrollTo(getXCentered(document.getElementById('sun')), 0);
 
 /**
  * Global variable : current selected object. Corresponds to the object which the user choose to follow, exemple : Earth, Moon, Jupiter, etc.
@@ -19,13 +19,39 @@ SELECTED_OBJ = null;
 OPENED_DESC = null;
 
 /**
- * This function centers the scroll when the page is loaded
- * @return : return to clear variables
+ * This function returns the left position of a DOM element relative to the window
+ * @param {Object} element : corresponds to the DOM element of which we seek to obtains left position
+ * @return {double} : left position
  */
-function centerScroll() {
-	var scroll = (document.getElementById('sun').getBoundingClientRect().left - document.body.getBoundingClientRect().left) - window.innerWidth / 2 + document.getElementById('sun').offsetWidth / 2;
-	window.scrollTo(scroll, 0);
-	return;
+function getLeft(element) {
+	return element.getBoundingClientRect().left - document.body.getBoundingClientRect().left;
+}
+
+/**
+ * This function returns the top position of a DOM element relative to the window
+ * @param {Object} element : corresponds to the DOM element of which we seek to obtains top position
+ * @return {double} : top position
+ */
+function getTop(element) {
+	return element.getBoundingClientRect().top - document.body.getBoundingClientRect().top;
+}
+
+/**
+ * This function returns the centered x position of the element in arguments
+ * @param {Object} element : corresponds to the DOM element of which we seek to obtains the centered left position
+ * @return {double} : centered left position
+ */
+function getXCentered (element) {
+	return getLeft(element) - window.innerWidth / 2 + element.offsetWidth / 2;
+}
+
+/**
+ * This function returns the centered y position of the element in arguments
+ * @param {Object} element : corresponds to the DOM element of which we seek to obtains the centered top position
+ * @return {double} : centered top position
+ */
+function getYCentered (element) {
+	return getTop(element) - window.innerHeight / 2 + element.offsetHeight / 2;
 }
 
 /**
@@ -34,8 +60,8 @@ function centerScroll() {
 */
 function updateLock() {
 	if (SELECTED_OBJ) {
-		var x = (SELECTED_OBJ.getBoundingClientRect().left - document.body.getBoundingClientRect().left) - (window.innerWidth / 2) + (SELECTED_OBJ.offsetWidth / 2);
-		var y = (SELECTED_OBJ.getBoundingClientRect().top - document.body.getBoundingClientRect().top) - (window.innerHeight / 2) + (SELECTED_OBJ.offsetHeight / 2);
+		var x = getXCentered(SELECTED_OBJ); /** @see solar_system.js#getXCentered() */
+		var y = getYCentered(SELECTED_OBJ); /** @see solar_system.js#getYCentered() */
 		window.scrollTo(x, y);
 		return true;
 	} else {
@@ -65,12 +91,12 @@ function updateFollow(obj_id) {
 		if (element_f.className.indexOf('unfollow') === -1) {
 			var previous_f = document.getElementsByClassName('unfollow')[0];
 			if (previous_f) {
-				toggleFollowInterface(previous_f, false); /** @see solar_system.js#toggleFollowInterface() : 46 */
+				toggleFollowInterface(previous_f, false); /** @see solar_system.js#toggleFollowInterface() */
 			}
-			toggleFollowInterface(element_f, true); /** @see solar_system.js#toggleFollowInterface() : 46 */
+			toggleFollowInterface(element_f, true); /** @see solar_system.js#toggleFollowInterface() */
 			SELECTED_OBJ = element;
 		} else {
-			toggleFollowInterface(element_f, false); /** @see solar_system.js#toggleFollowInterface() : 46 */
+			toggleFollowInterface(element_f, false); /** @see solar_system.js#toggleFollowInterface() */
 			SELECTED_OBJ = null;
 		}
 		return true;
@@ -113,7 +139,7 @@ function getObjCoord(obj_id) {
 *	@return {int, int} obj_x, obj_y : coordinates of the corresponding vector
 */
 function getVectCoord(obj_id1, obj_id2) {
-	return [getObjCoord(obj_id2)[0] - getObjCoord(obj_id1)[0], getObjCoord(obj_id2)[1] - getObjCoord(obj_id1)[1]]; /** @see solar_system.js#getObjCoord() : 99 */
+	return [getObjCoord(obj_id2)[0] - getObjCoord(obj_id1)[0], getObjCoord(obj_id2)[1] - getObjCoord(obj_id1)[1]]; /** @see solar_system.js#getObjCoord() */
 }
 
 
@@ -123,7 +149,7 @@ function getVectCoord(obj_id1, obj_id2) {
 *	@return {int} norm : norm of the vector
 */
 function getVectNorm(obj_id1, obj_id2) {
-	return Math.sqrt(Math.pow(getVectCoord(obj_id1, obj_id2)[0], 2) + Math.pow(getVectCoord(obj_id1, obj_id2)[1], 2)); /** @see solar_system.js#getVectCoord() : 111 */
+	return Math.sqrt(Math.pow(getVectCoord(obj_id1, obj_id2)[0], 2) + Math.pow(getVectCoord(obj_id1, obj_id2)[1], 2)); /** @see solar_system.js#getVectCoord()  */
 }
 
 
@@ -133,7 +159,7 @@ function getVectNorm(obj_id1, obj_id2) {
 *	@return {int} determinant : determinant of the vectors
 */
 function getVectsDet(vect1_obj1, vect1_obj2, vect2_obj1, vect2_obj2) {
-	return getVectCoord(vect1_obj1, vect1_obj2)[0] * getVectCoord(vect2_obj1, vect2_obj2)[1] - getVectCoord(vect1_obj1, vect1_obj2)[1] * getVectCoord(vect2_obj1, vect2_obj2)[0];
+	return getVectCoord(vect1_obj1, vect1_obj2)[0] * getVectCoord(vect2_obj1, vect2_obj2)[1] - getVectCoord(vect1_obj1, vect1_obj2)[1] * getVectCoord(vect2_obj1, vect2_obj2)[0]; /** @see solar_system.js#getVectNorm()  */
 }
 
 
@@ -154,13 +180,13 @@ function is_Transit(obj_id) {
 			transit_dates =  [1631, 1651, 1661, 1677, 1743, 1753, 1769, 1802, 1815, 1822, 1832, 1835, 1845, 1848, 1861, 1868, 1878, 1881, 1891, 1894, 1907, 1914, 1924, 1927, 1937, 1940, 1953, 1957, 1960, 1970, 1973, 1986, 1993, 1999, 2003, 2006, 2016, 2019, 2032, 2039, 2049, 2052, 2062, 2065, 2078, 2085, 2095, 2098, 2108, 2111, 2124, 2131, 2141, 2144, 2154];
 		}
 		
-		var det = getVectsDet('earth', obj_id, 'earth', 'sun'),
-			norm_1 = getVectNorm('earth', obj_id),
-			norm_2 = getVectNorm('earth', 'sun'),
+		var det = getVectsDet('earth', obj_id, 'earth', 'sun'), /** @see solar_system.js#getVectsDet()  */
+			norm_1 = getVectNorm('earth', obj_id), /** @see solar_system.js#getVectNorm()  */
+			norm_2 = getVectNorm('earth', 'sun'), /** @see solar_system.js#getVectNorm()  */
 			year = parseInt($('#year').text());
 
 		if (obj_id === 'moon') {
-			var norm_3 = getVectNorm('moon', 'sun');
+			var norm_3 = getVectNorm('moon', 'sun'); /** @see solar_system.js#getVectNorm()  */
 			return [((det > -15000 && det < 10000) && (norm_3 < norm_2)), ((det > -10000 && det < 10000) && (norm_3 > norm_2))];
 		} else {
 			var btw_max = (obj_id === 'mercury') ? 45000 : 25000; 
@@ -180,15 +206,16 @@ function displayTransitMsg(obj_id) {
 	} else {
 		var obj_alert = '#';
 		if (obj_id === 'moon') {	
-			if (getVectNorm('earth', 'sun') > getVectNorm('moon', 'sun')) obj_alert += 'solar-eclipse-alert'; 
+			if (getVectNorm('earth', 'sun') > getVectNorm('moon', 'sun')) obj_alert += 'solar-eclipse-alert'; /** @see solar_system.js#getVectNorm()  */
 			else obj_alert += 'lunar-eclipse-alert';
 		} else {
 			obj_alert += obj_id + '-transit-alert';
 		}
 
+		/** @see solar_system.js#is_Transit()  */
 		if ((obj_id !== 'moon' && is_Transit(obj_id)) || (obj_id === 'moon' && (is_Transit(obj_id)[0] || is_Transit(obj_id)[1]))) {
-			var obj_x = getObjCoord(obj_id)[0],
-				obj_y = getObjCoord(obj_id)[1];
+			var obj_x = getObjCoord(obj_id)[0], /** @see solar_system.js#getObjCoord() */
+				obj_y = getObjCoord(obj_id)[1]; /** @see solar_system.js#getObjCoord() */
 			$(obj_alert).offset({top: obj_y - $(obj_alert).height() / 2, left: obj_x - $(obj_alert).width() / 2});
 			if (document.getElementById(obj_alert.replace('#', '')).className.indexOf('faded-in') === -1) {
 				fadeIn(obj_alert.replace('#', ''));
@@ -206,9 +233,9 @@ function displayTransitMsg(obj_id) {
  * This function calls the displayTransitMsg for all the concerned objects
  */
 function manageTransitMsg() {
-	displayTransitMsg('venus');
-	displayTransitMsg('mercury');
-	displayTransitMsg('moon');
+	displayTransitMsg('venus'); /** @see solar_system.js#displayTransitMsg()  */
+	displayTransitMsg('mercury'); /** @see solar_system.js#displayTransitMsg()  */
+	displayTransitMsg('moon'); /** @see solar_system.js#displayTransitMsg()  */
 	return;
 }
 
@@ -246,7 +273,6 @@ function fadeOut(obj_id) {
 		document.getElementById(obj_id).className = obj_classes.replace('faded-in', 'faded-out');
 		return true;
 	} else {
-		console.log('coucou')
 		return false;
 	}
 }
@@ -264,34 +290,34 @@ $(document).ready(function() {
 		e.stopPropagation();
 		var obj = $(this).attr('id'),
 			obj_id = obj.substring(0, obj.lastIndexOf('-link') === -1 ? obj.length : obj.lastIndexOf('-link'));
-		if (OPENED_DESC) fadeOut(OPENED_DESC.id);
-		fadeIn(obj_id + '-desc');
+		if (OPENED_DESC) fadeOut(OPENED_DESC.id); /** @see solar_system.js#fadeOut()  */
+		fadeIn(obj_id + '-desc'); /** @see solar_system.js#fadeIn()  */
 	})
 
 	.on('click', '.close', function() {
-		fadeOut(OPENED_DESC.id);
+		fadeOut(OPENED_DESC.id); /** @see solar_system.js#fadeOut()  */
 	})
 
 	.on('click', '.follow', function() {
 		var obj_id = $(this).attr('id').replace('-follow', '');
-		updateFollow(obj_id);
+		updateFollow(obj_id); /** @see solar_system.js#updateFollow() */
 	})
 
 	.on('click', '.unfollow, #unfollow-all', function() {
-		if (SELECTED_OBJ) updateFollow(SELECTED_OBJ.id);
+		if (SELECTED_OBJ) updateFollow(SELECTED_OBJ.id); /** @see solar_system.js#updateFollow() */
 	});
 
 	var today = new Date();
-	displayDate(today);
+	displayDate(today); /** @see solar_system.js#displayDate() */
 	setInterval(function() {
-		var day = displayDate(today);
+		var day = displayDate(today); /** @see solar_system.js#displayDate() */
 		today.setDate(day + 1);
-		displayDate(today);
+		displayDate(today); /** @see solar_system.js#displayDate() */
 	}, 695.24);
 
 	setInterval(function() {
-		updateLock();
-		manageTransitMsg();
+		updateLock(); /** @see solar_system.js#updateLock() */
+		manageTransitMsg(); /** @see solar_system.js#manageTransitMsg()  */
 	}, 0.001);
 	
 });
