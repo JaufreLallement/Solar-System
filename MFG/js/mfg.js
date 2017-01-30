@@ -86,13 +86,12 @@ HTMLElement.prototype.fade =  function() {
 		 if (this.className.indexOf('faded-in') > -1) {
 			 this.className = this.className.replace('-in', '-out');
 		 } else {
-			 if (document.getElementsByClassName('faded-in').length > 0) {
-				 if (document.getElementsByClassName('faded-in').length === 1) {
+			 var n_elements = document.getElementsByClassName('faded-in').length;
+			 if (n_elements > 0) {
+				 if (n_elements === 1) {
 					 document.getElementsByClassName('faded-in')[0].className = document.getElementsByClassName('faded-in')[0].className.replace('-in', '-out');
 				 } else {
-					 for (i = 0; i < document.getElementsByClassName('faded-in').length; i++) {
-						 document.getElementsByClassName('faded-in')[i].className = document.getElementsByClassName('faded-in')[i].className.replace('-in', '-out');
-					 }
+					 document.getElementsByClassName('faded-in')[n_elements].className = document.getElementsByClassName('faded-in')[n_elements].className.replace('-in', '-out');
 				 }
 				 this.className = this.className.replace('-out', '-in');
 			 } else {
