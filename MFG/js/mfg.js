@@ -86,21 +86,18 @@ HTMLElement.prototype.fade =  function() {
 		 if (this.className.indexOf('faded-in') > -1) {
 			 this.className = this.className.replace('-in', '-out');
 		 } else {
-			 var n_elements = document.getElementsByClassName('faded-in').length;
-			 if (n_elements > 0) {
-				 if (n_elements === 1) {
-					 document.getElementsByClassName('faded-in')[0].className = document.getElementsByClassName('faded-in')[0].className.replace('-in', '-out');
-				 } else {
-					 document.getElementsByClassName('faded-in')[n_elements].className = document.getElementsByClassName('faded-in')[n_elements].className.replace('-in', '-out');
-				 }
-				 this.className = this.className.replace('-out', '-in');
-			 } else {
-				 this.className = this.className.replace('-out', '-in');
+			 if (document.getElementsByClassName('faded-in').length > 0) {
+				 var obj_classes = this.className.replace('faded-out', ''),
+				 	 opened_classes = document.getElementsByClassName('faded-in')[0].className.replace('faded-in', '');
+				 if (obj_classes === opened_classes) {
+					document.getElementsByClassName('faded-in')[0].className = document.getElementsByClassName('faded-in')[0].className.replace('-in', '-out');
+				}
 			 }
+			 this.className = this.className.replace('-out', '-in');
 		 }
 		return true;
 	} else {
-		window.alert('Impossible de trouver l\'objet correspondant à l\'identifiant ' + this.id + '!');
+		window.alert('La fonction fade ne peut s\'appliquer sur l\'objet ' + this.id + '!');
 		return false;
 	}
 }
