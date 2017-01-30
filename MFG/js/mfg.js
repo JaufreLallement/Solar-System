@@ -26,7 +26,7 @@ HTMLElement.prototype.getScreenTop = function() {
 
 
 /**
- * This function returns the left position of a DOM element relative to the window
+ * This function returns the left position of a DOM element relatively to the document
  * @return {double} : left position
  */
 HTMLElement.prototype.getLeft = function() {
@@ -35,7 +35,7 @@ HTMLElement.prototype.getLeft = function() {
 
 
 /**
- * This function returns the top position of a DOM element relative to the window
+ * This function returns the top position of a DOM element relatively to the document
  * @return {double} : top position
  */
 HTMLElement.prototype.getTop = function() {
