@@ -906,6 +906,7 @@ body:active {
 }
 
 .desc-title {
+	text-align: center;
 	font-size: 6vh;
 	margin-bottom: 2vh;
 	margin-top: 0;
@@ -918,6 +919,7 @@ body:active {
 }
 
 .desc-img-container {
+	text-align: center;
 	height: 50%;
 	position: relative;
 	display: block;
@@ -950,6 +952,7 @@ body:active {
 .follow, .unfollow {
 	position: relative;
 	display: block;
+	text-align: center;
 }
 
 .clickable {
