@@ -171,14 +171,9 @@ function displayTransitMsg(obj_id) {
 				obj_y = document.getElementById(obj_id).getScreenTop(); /** @see mfg.js#getScreenTop() */
 
 			document.getElementById(obj_alert).setPosition(obj_x - (document.getElementById(obj_alert).clientWidth / 2.5), obj_y);
-
-			if (document.getElementById(obj_alert).className.indexOf('faded-in') === -1) {
-				document.getElementById(obj_alert).fade();
-			}
+			document.getElementById(obj_alert).fadeIn(500);
 		} else {
-			if (document.getElementById(obj_alert).className.indexOf('faded-out') === -1) {
-				document.getElementById(obj_alert).fade();
-			}
+			document.getElementById(obj_alert).fadeOut(500);
 		}
 	}
 	return;
@@ -221,14 +216,15 @@ document.addEventListener('DOMContentLoaded', function() {
 		e.stopPropagation();
 		var length = (this.id.indexOf('-link') === -1) ? this.id.length : this.id.lastIndexOf('-link'),
 			id = this.id.substring(0, length);
-		document.getElementById(id + '-desc').fade(); /** @see mfg.js#fade()  */
+		if (document.getElementsByClassName('desc faded-in').length > 0) document.getElementsByClassName('desc faded-in')[0].fadeOut(500);
+		document.getElementById(id + '-desc').fadeIn(500);
 	}, false);
 
 	/**
 	 * Listener which allows to close an object description when the user click on the close cross
 	 */
 	document.getElementsByClassName('close').addClassListener('click', function () {
-		this.parentNode.fade();
+		this.parentNode.fadeOut(500);
 	}, false);
 
 
