@@ -8,6 +8,36 @@
 /* ----------------------------------------------------------- FUNCTIONS ----------------------------------------------------------- */
 
 /**
+ * Returns the height of the viewport
+ * @return {double} : height of the viewport
+ */
+function getWindowHeight() {
+	return Math.max(document.documentElement.clientHeight, window.innerHeight);
+}
+
+
+/**
+ * Returns the width of the viewport
+ * @return {double} : width of the viewport
+ */
+function getWindowWidth() {
+	return Math.max(document.documentElement.clientWidth, window.innerWidth);
+}
+
+
+/**
+ * Returns the collection on which the scroll will be done depending on the used browser
+ * @return {HTMLCollection} body : valid collection on which apply the scroll effect, document.documentElement - Firefox, document.body - Chrome
+ */
+function checkBody() {
+	document.documentElement.scrollTop += 1;
+	const body = (document.documentElement.scrollTop !== 0) ? document.documentElement : document.body;
+	document.documentElement.scrollTop -= 1;
+	return body;
+}
+
+
+/**
  * This function returns the left position of the element relatively to the screen
  * @return {double} : relative left position of the element
  */
@@ -77,27 +107,86 @@ HTMLElement.prototype.getCoords = function() {
 
 
 /**
- * This function fade in or out the element on which it is called
- * This function needs the MFG.css to work
- * @return {boolean} : true if the object exists, else false
+ * Add the given class to the element
+ * @param {String} className : class to add to the element
+ * @return {String} : classes of the element after the modification
  */
-HTMLElement.prototype.fade =  function() {
-	if (this && this.className.indexOf('faded')) {
-		 if (this.className.indexOf('faded-in') > -1) {
-			 this.className = this.className.replace('-in', '-out');
-		 } else {
-			 if (document.getElementsByClassName('faded-in').length > 0) {
-				 var obj_classes = this.className.replace('faded-out', ''),
-				 	 opened_classes = document.getElementsByClassName('faded-in')[0].className.replace('faded-in', '');
-				 if (obj_classes === opened_classes) {
-					document.getElementsByClassName('faded-in')[0].className = document.getElementsByClassName('faded-in')[0].className.replace('-in', '-out');
-				}
-			 }
-			 this.className = this.className.replace('-out', '-in');
-		 }
+HTMLElement.prototype.addClass = function (className) {
+	if (this.className.indexOf(className) === -1)	this.className += ' ' + className;
+	return this.className;
+}
+
+
+/**
+ * Remove the given class from the element
+ * @param {String} className : class to remove from the element
+ * @return {String} : classes of the element after the modification
+ */
+HTMLElement.prototype.removeClass = function (className) {
+	if (this.className.indexOf(className) > -1) this.className = this.className.replace(className, '').trim();
+	return this.className;
+}
+
+
+/**
+ * Replace the given class of the element by another
+ * @param {String} prevClass : class to replace
+ * @param {String} newClass : new class
+ * @return {String} : classes of the element after the modification
+ */
+HTMLElement.prototype.replaceClass = function (prevClass, newClass) {
+	if (this.className.indexOf(prevClass) > -1) this.className = this.className.replace(prevClass, newClass);
+	return this.className;
+}
+
+
+/**
+ * Add the given class to each element that has the given class
+ * @param {String} className : class to add to the elements
+ * @return {boolean} : true - the array contains elements, false - the array is empty
+ */
+HTMLCollection.prototype.addClass = function (className) {
+	if (this.length > 0) {
+		for (i = 0; i < this.length; i++) {
+			this[i].addClass(className);
+		}
 		return true;
 	} else {
-		window.alert('La fonction fade ne peut s\'appliquer sur l\'objet ' + this.id + '!');
+		return false;
+	}
+}
+
+
+/**
+ * Remove the given class from each element that has the given class
+ * @param {String} className : class to remove from the elements
+ * @return {boolean} : true - the array contains elements, false - the array is empty
+ */
+HTMLCollection.prototype.removeClass = function (className) {
+	if (this.length > 0) {
+		for (i = 0; i < this.length; i++) {
+			this[i].removeClass(className);
+		}
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
+/**
+ * Replace the given class by another for each element
+  * @param {String} prevClass : class to replace
+ * @param {String} newClass : new class
+ * @return {boolean} : true - the array contains elements, false - the array is empty
+ */
+HTMLCollection.prototype.replaceClass = function (prevClass, newClass) {
+	if (this.length > 0) {
+		for (i = 0; i < this.length; i++) {
+			this[i].replaceClass(prevClass, newClass);
+		}
+		return true;
+	} else {
 		return false;
 	}
 }
@@ -134,22 +223,214 @@ Array.prototype.addMultipleClassListener = function(event, func, useCapture) {
 
 
 /**
-*	This function allows the user to lock the scroll to focus a specific element of the DOM
-*	@param {int} speed : base speed of the scroll
-*	@return
+ * This function apply the given style for the given property for each element of the class on which the function is called
+ * @param {String} property : css property
+ * @param {String} style : css style of the property
+ * @return
+ */
+HTMLCollection.prototype.classStyle = function (property, style) {
+	for (i = 0; i < this.length; i++) {
+		eval("this[" + i + "].style." + property + " = " + "style");
+	}
+	return;
+}
+
+
+/**
+* This function allows the user to lock the scroll to focus a specific element of the DOM
+* @param {int} speed : base speed of the scroll
+* @return
 */
 HTMLElement.prototype.smoothYScrollTo = function (duration) {
 	 if (duration <= 0) return;
         var element = this,
-			difference = this.getTop() - document.body.scrollTop,
+			difference = this.getTop() - (document.documentElement.scrollTop || document.body.scrollTop),
         	increment = difference / duration * 2;
 
     setTimeout(function() {
         document.body.scrollTop += increment;
-        element.smoothYScrollTo(duration - 1);
+		document.documentElement.scrollTop += increment;
+        element.smoothYScrollTo(duration - 2);
     }, 10);
 }
 
+
+/**
+* This function returns the given string with first character in caps.
+* @return {String} : modified string.
+*/ 
+String.prototype.capsFirstLetter = function () {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
+
+/**
+ * Slides up an HTML element to hide its content
+ * This function requires the mfg.css
+ * @param {int} duration : duration of the animation in ms
+ * @return {boolean} : true - the element exists
+ */
+HTMLElement.prototype.slideUp = function(duration = 1000) {
+	if (this) {
+		this.style.transition = 'max-height ' + duration / 1000 + 's ease-in-out';
+		this.removeClass('slide-down');
+		this.addClass('slide-up');
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
+/**
+ * Slides down an HTML element to hide its content
+ * This function requires the mfg.css
+ * @param {int} duration : duration of the animation in ms
+ * @return {boolean} : true - the element exists
+ */
+HTMLElement.prototype.slideDown = function(duration = 1000) {
+	if (this) {
+		this.style.transition = 'max-height ' + duration / 1000 + 's ease-in-out';
+		this.removeClass('slide-up');
+		this.addClass('slide-down');
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
+/**
+ * This function fade in the element on which it is called
+ * This function requires the mfg.css to work
+ * @param {int} duration : duration of the animation in ms
+ * @return {boolean} : true - the element exists, false - the element does not exist
+ */
+HTMLElement.prototype.fadeIn = function (duration = 1000) {
+	if (this) {
+		this.style.transition = 'visibility 0s linear 0s, opacity ' + duration / 1000 + 's';
+		this.removeClass('faded-out');
+		this.addClass('faded-in');
+		return true;
+	} else {
+		return false;
+	}
+}
+
+
+/**
+ * This function fade out the element on which it is called
+ * This function requires the mfg.css to work
+ * @param {int} duration : duration of the animation in ms
+ * @return {boolean} : true - the element exists, false - the element does not
+ */
+HTMLElement.prototype.fadeOut = function (duration = 1000) {
+	if (this) {
+		this.style.transition = 'visibility 0s linear ' +  duration / 1000 +'s, opacity ' + duration / 1000 + 's';
+		this.removeClass('faded-in');
+		this.addClass('faded-out');
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
+ * Scroll to the given element
+ * @param {int} duration : duration of the animation
+ * @param {String} animation : type of animation to use
+ * @return : the return will stop the function effect
+ */
+HTMLElement.prototype.scrollIt = function (duration = 200, animation = 'linear') {
+	/**
+	 * @const {function[]} : available types of animation
+	 */
+	const animations = {
+		linear(t) {
+			return t;
+		},
+		easeInQuad(t) {
+			return t * t;
+		},
+		easeOutQuad(t) {
+			return t * (2 - t);
+		},
+		easeInOutQuad(t) {
+			return (t < 0.5) ? 2 * t * t : -1 + (4 - 2 * t) * t;
+		},
+		easeInCubic(t) {
+			return t * t * t;
+		},
+		easeOutCubic(t) {
+			return (--t) * t * t + 1;
+		},
+		easeInOutCubic(t) {
+			return (t < 0.5) ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+		},
+		easeInQuart(t) {
+			return t * t * t * t;
+		},
+		easeOutQuart(t) {
+			return 1 - (--t) * t * t * t;
+		},
+		easeInOutQuart(t) {
+			return (t < 0.5) ? 8 * t * t * t * t : 1 - 8 * (--t) * t * t * t;
+		},
+		easeInQuint(t) {
+			return t * t * t * t * t;
+		},
+		easeOutQuint(t) {
+			return 1 + (--t) * t * t * t * t;
+		},
+		easeInOutQuint(t) {
+			return (t < 0.5) ? 16 * t * t * t * t * t : 1 + 16 * (--t) * t * t * t * t;
+		}
+	};
+
+
+	/**
+	 * @const {HTMLCollection} body : HTMLCollection based on the checkBody function
+	 */
+	const body = checkBody();
+
+	/**
+	 * @const {double} start : current scrollTop
+	 */
+	const start = body.scrollTop;
+
+	/**
+	 * @const {Date} startTime : current time
+	 */
+	const startTime = Date.now();
+
+	/**
+	 * @const {double} documentHeight : height of the document
+	 */
+	const documentHeight = body.offsetHeight;
+
+	/**
+	 * @const {double} windowHeight : 
+	 */
+	const windowHeight = getWindowHeight();
+
+	/**
+	 * @const {double} destination : top position of the target
+	 */
+	const destination = documentHeight - this.offsetTop < windowHeight ? documentHeight - windowHeight : this.offsetTop;
+
+	function scroll() {
+		const now = Date.now();
+		const time = Math.min(1, ((now - startTime) / duration));
+		const timeFunction = animations[animation](time);
+		body.scrollTop = (timeFunction * (destination - start)) + start;
+
+		if (body.scrollTop === destination) {
+			return;
+		}
+		requestAnimationFrame(scroll);
+	}
+	scroll();
+}
 
 /* §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§ */
 /* ----------------------------------------------------------- LISTENERS ----------------------------------------------------------- */

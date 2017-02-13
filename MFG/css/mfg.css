@@ -3,37 +3,41 @@
                             /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
 
-
-
-.fullWidth {
-	width: 100%;
-	text-align: center;
-}
-
 .flexed {
 	display: -webkit-flex;
-	display: -moz-flex;
-	display: -ms-flex;
 	display: flex;
 }
 
 .flexed-row {
-	width: 100%;
-	-webkit-flex-direction: row;
-	-moz-flex-direction: row;
-	flex-direction: row;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
 }
 
 .flexed-column {
-	-webkit-flex-direction: column;
-	-moz-flex-direction: column;
-	flex-direction: column; 
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column; 
 }
 
-.flex-grow {
-	-webkit-flex-grow: 1;
-	-moz-flex-grow: 1;
-	flex-grow: 1;
+.flex-nogrow {
+  -webkit-flex-grow: 0;
+	-moz-flex-grow: 0;
+	flex-grow: 0;
+}
+
+.half, .one-third, .one-fourth, .one-fifth {
+  -webkit-flex-grow: 1;
+  -moz-flex-grow: 1;
+  flex-grow: 1;
+  -webkit-flex-shrink: 1;
+  -moz-flex-shrink: 1;
+  flex-shrink: 1;
 }
 
 .half {
@@ -49,21 +53,44 @@
 }
 
 .one-fifth {
-	width: calc(100% / 5);
+	width: 20%;
 }
 
 .bold {
 	font-weight: bold;
 }
 
-.faded-out {
+.faded-out, .faded {
 	visibility: hidden;
 	opacity: 0;
-	transition: visibility 0s linear 0.5s, opacity 0.5s;
 }
 
 .faded-in {
 	visibility: visible;
 	opacity: 1;
-	transition: visibility 0s linear 0s, opacity 0.5s ;
 }
+
+.slide-down, .slide-up {
+  max-height: 0;
+  overflow-y: hidden;
+}
+
+.slide-down {
+  max-height: 100vh;
+}
+
+
+/* §§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§ */
+/* ----------------------------------------------------------- MEMO FLEXBOX ----------------------------------------------------------- */
+/*
+display: flex; => initie la flex box
+flex-direction: row / row-reverse / column / column-reverse; => direction du flex
+flex-wrap: wrap / nowrap; => retour ou non à la ligne
+flex-flow => direction + wrap
+justify-content: center / flex-start / flex-end / space-around / space-between; => position des éléments de la flex-box
+align-items: flex-start / center / flex-end / strech; => alignement vertical des éléments de la flex-box
+align-content: flex-start / center / flex-end / space-around / space-between; => position des éléments de la flex-box de manière verticale si plusieurs lignes
+order => ordre des éléments de la flex-box
+flex-grow => gestion de l'augmentation de la taille d'un élément en fonction de l'espace restant
+flex-shrink => gestion de la réduction de la taille d'un élément en fonction de l'espace restant
+*/
