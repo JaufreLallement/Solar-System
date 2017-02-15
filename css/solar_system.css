@@ -20,7 +20,7 @@ html {
 body {
 	font-family: 'Raleway';
 	font-weight: lighter;
-	background-image: url('../img/milky way.png' );
+	background-image: url('../img/milky_way.jpg' );
 	background-size: cover;
 	background-attachment: fixed;
 	background-position: center;
@@ -33,13 +33,13 @@ body {
 	cursor: grab;
 }
 
-body::after {
+body::before {
 	position: absolute; 
 	width: 0; 
 	height: 0; 
 	overflow: hidden; 
 	z-index: -1;
-	content: url('../img/milky way.png') url('../img/sun.png') url('../img/planets.png') url('../img/moons.png') url('../img/mars_moons.png') url('../img/tchouri.png') url('../img/asteroid_belt.png') url('../img/asteroid_belt3.png') url('../img/saturn.png') url('../img/desc/ariel_desc.png') url('../img/desc/asteroid_belt_desc.png') url('../img/desc/asteroid_belt_desc.png') url('../img/desc/callisto_desc.png') url('../img/desc/charon_desc.png') url('../img/desc/deimos_desc.png') url('../img/desc/dione_desc.png') url('../img/desc/enceladus_desc.png') url('../img/desc/europa_desc.png') url('../img/desc/ganymede_desc.png') url('../img/desc/iapetus_desc.png') url('../img/desc/io_desc.png') url('../img/desc/jupiter_desc.png') url('../img/desc/kuiper_belt_desc.png') url('../img/desc/mars_desc.png') url('../img/desc/mercury_desc.png') url('../img/desc/mimas_desc.png') url('../img/desc/miranda_desc.png') url('../img/desc/moon_desc.png') url('../img/desc/neptune_desc.png') url('../img/desc/oberon_desc.png') url('../img/desc/phobos_desc.png') url('../img/desc/pluto_desc.png') url('../img/desc/rhea_desc.png') url('../img/desc/saturn_desc.png') url('../img/desc/sun_desc.png') url('../img/desc/tchouri_desc.png') url('../img/desc/tethys_desc.png') url('../img/desc/titan_desc.png') url('../img/desc/titania_desc.png') url('../img/desc/triton_desc.png') url('../img/desc/umbriel_desc.png') url('../img/desc/uranus_desc.png') url('../img/desc/venus_desc.png');
+	content: url('../img/milky_way.jpg') url('../img/sun.png') url('../img/planets.png') url('../img/moons.png') url('../img/mars_moons.png') url('../img/tchouri.png') url('../img/asteroid_belt.png') url('../img/asteroid_belt3.png') url('../img/saturn.png') url('../img/desc/ariel_desc.jpg') url('../img/desc/asteroid_belt_desc.jpg') url('../img/desc/asteroid_belt_desc.jpg') url('../img/desc/callisto_desc.jpg') url('../img/desc/charon_desc.jpg') url('../img/desc/deimos_desc.jpg') url('../img/desc/dione_desc.jpg') url('../img/desc/enceladus_desc.jpg') url('../img/desc/europa_desc.jpg') url('../img/desc/ganymede_desc.jpg') url('../img/desc/iapetus_desc.jpg') url('../img/desc/io_desc.jpg') url('../img/desc/jupiter_desc.jpg') url('../img/desc/kuiper_belt_desc.jpg') url('../img/desc/mars_desc.jpg') url('../img/desc/mercury_desc.jpg') url('../img/desc/mimas_desc.jpg') url('../img/desc/miranda_desc.jpg') url('../img/desc/moon_desc.jpg') url('../img/desc/neptune_desc.jpg') url('../img/desc/oberon_desc.jpg') url('../img/desc/phobos_desc.jpg') url('../img/desc/pluto_desc.jpg') url('../img/desc/rhea_desc.jpg') url('../img/desc/saturn_desc.jpg') url('../img/desc/sun_desc.jpg') url('../img/desc/tchouri_desc.jpg') url('../img/desc/tethys_desc.jpg') url('../img/desc/titan_desc.jpg') url('../img/desc/titania_desc.jpg') url('../img/desc/triton_desc.jpg') url('../img/desc/umbriel_desc.jpg') url('../img/desc/uranus_desc.jpg') url('../img/desc/venus_desc.jpg');
 }
 
 body:active {
