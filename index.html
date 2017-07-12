@@ -1,937 +1,124 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
 
-		<!-- Basic Page Needs
+<head>
+
+    <!-- Basic Page Needs
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-		<meta charset="utf-8">
-		<meta name="description" content="Solar System">
-		<meta name="keywords" content="HTML5, CSS3">
-		<meta name="author" content="Lallement Jaufré">
+    <meta charset="utf-8">
+    <meta name="description" content="Solar System">
+    <meta name="keywords" content="HTML5, CSS3">
+    <meta name="author" content="Lallement Jaufré">
 
-		<!-- Favicon
+    <!-- Favicon
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-		<link rel="icon" type="image/png" href="img/sun.png">
+    <link rel="icon" type="image/png" href="img/sun.png">
 
-		<!-- CSS
+    <!-- CSS
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-		<link rel="stylesheet" type="text/css" href="css/glyphicon.css">
-		<link rel="stylesheet" type="text/css" href="MFG/css/mfg.css">
-		<link rel="stylesheet" type="text/css" href="css/solar_system.css">
+    <link rel="stylesheet" type="text/css" href="css/glyphicon.css">
+    <link rel="stylesheet" type="text/css" href="MFG/css/mfg.css">
+    <link rel="stylesheet" type="text/css" href="css/solar_system.css">
 
-		<title>Solarys</title>
-	</head>
-	<body>
-		<div id="tool-box" class="flexed flexed-row">
-			<div id="tools">
-				<div class="tool-group">
-					<span id="unfollow-all" class="tool glyphicon glyphicon-eye-close" title="Ne plus suivre"></span>
-				</div>
-				<!--
+    <title>Solarys</title>
+</head>
+
+<body>
+    <div id="tool-box" class="flexed flexed-row">
+        <div id="tools">
+            <div class="tool-group">
+                <span id="unfollow-all" class="tool glyphicon glyphicon-eye-close" title="Ne plus suivre"></span>
+            </div>
+            <!--
 				<div id="zoom" class="tool-group">
 					<span id="zoom_p" class="tool glyphicon glyphicon-plus" title="Zoomer"></span>
 					<span id="zoom_m" class="tool glyphicon glyphicon-minus" title="Dézoomer"></span>
 				</div>
 				-->
-			</div>
-			<div id="date-container" class="flex-grow">
-				<span id="date" class="tool"></span>
-			</div>	
-		</div>
+        </div>
+        <div id="date-container" class="flex-grow">
+            <span id="date" class="tool"></span>
+        </div>
+    </div>
 
-		<div id="alert-msg-container">
-			<p id="mercury-transit-alert" class="alert-msg faded-out">Transit de Mercure!</p>
-			<p id="venus-transit-alert" class="alert-msg faded-out">Transit de Venus!</p>
-			<p id="solar-eclipse-alert" class="alert-msg faded-out">Eclipse solaire!</p>
-			<p id="lunar-eclipse-alert" class="alert-msg faded-out">Eclipse lunaire!</p>
-		</div>
+    <div id="alert-msg-container">
+        <p id="mercury-transit-alert" class="alert-msg faded-out">Transit de Mercure!</p>
+        <p id="venus-transit-alert" class="alert-msg faded-out">Transit de Venus!</p>
+        <p id="solar-eclipse-alert" class="alert-msg faded-out">Eclipse solaire!</p>
+        <p id="lunar-eclipse-alert" class="alert-msg faded-out">Eclipse lunaire!</p>
+    </div>
 
-		<!-- Solar System
+    <!-- Solar System
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-		<article id="solar-system-container">
-			<h1 class="main-title">Solarys</h1>
-			<div id="solar-system">
-				
-				<!-- SUN
-				–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-				<div id="sun" class="star object"></div>
-				
-				<!-- MERCURY
-				–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-				<div id="mercury-container" class="planet-container container">
-					<div id="mercury" class="planet object"></div>
-				</div>
+    <article id="solar-system-container">
+        <h1 id="main-title" class="title">Solarys</h1>
+    </article>
 
-				<!-- VENUS
-				–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-				<div id="venus-container" class="planet-container container container">
-					<div id="venus" class="planet object"></div>
-				</div>
+    <article id="descriptions">
 
-				<!-- EARTH
-				–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-				<div id="earth-container" class="planet-container container">
-					<div id="earth" class="planet object">
-						<div id="moon-container" class="satellite-container container">
-							<div id="moon" class="satellite object"></div>	
-						</div>
-					</div>
-				</div>
-
-				<!-- MARS
-				–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-				<div id="mars-container" class="planet-container container">
-					<div id="mars" class="planet object">
-						<div id="phobos-container" class="satellite-container container">
-							<div id="phobos" class="satellite object"></div>	
-						</div>
-
-						<div id="deimos-container" class="satellite-container container">
-							<div id="deimos" class="satellite object"></div>	
-						</div>
-					</div>
-				</div>
-
-				<!-- ASTEROID BELT
-				–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-				<div id="asteroid-belt" class="asteroid-belt"></div>
-
-				<!-- JUPITER
-				–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-				<div id="jupiter-container" class="planet-container container">
-					<div id="jupiter" class="planet object">
-						<div id="io-container" class="satellite-container container">
-							<div id="io" class="satellite object"></div>	
-						</div>
-
-						<div id="europa-container" class="satellite-container container">
-							<div id="europa" class="satellite object"></div>	
-						</div>
-
-						<div id="ganymede-container" class="satellite-container container">
-							<div id="ganymede" class="satellite object"></div>	
-						</div>
-
-						<div id="callisto-container" class="satellite-container container">
-							<div id="callisto" class="satellite object"></div>	
-						</div>
-					</div>
-				</div>
-
-				<!-- SATURN
-				–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-				<div id="saturn-container" class="planet-container container">
-					<div id="saturn" class="planet object">
-
-						<div id="mimas-container" class="satellite-container container">
-							<div id="mimas" class="satellite object"></div>	
-						</div>
-
-						<div id="enceladus-container" class="satellite-container container">
-							<div id="enceladus" class="satellite object"></div>	
-						</div>
-
-						<div id="tethys-container" class="satellite-container container">
-							<div id="tethys" class="satellite object"></div>	
-						</div>
-
-						<div id="dione-container" class="satellite-container container">
-							<div id="dione" class="satellite object"></div>	
-						</div>
-
-						<div id="rhea-container" class="satellite-container container">
-							<div id="rhea" class="satellite object"></div>	
-						</div>
-
-						<div id="titan-container" class="satellite-container container">
-							<div id="titan" class="satellite object"></div>	
-						</div>
-
-						<div id="iapetus-container" class="satellite-container container">
-							<div id="iapetus" class="satellite object"></div>	
-						</div>
-					</div>
-				</div>
-
-				<!-- URANUS
-				–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-				<div id="uranus-container" class="planet-container container">
-					<div id="uranus" class="planet object">
-						<div id="miranda-container" class="satellite-container container">
-							<div id="miranda" class="satellite object"></div>	
-						</div>
-
-						<div id="ariel-container" class="satellite-container container">
-							<div id="ariel" class="satellite object"></div>	
-						</div>
-
-						<div id="umbriel-container" class="satellite-container container">
-							<div id="umbriel" class="satellite object"></div>	
-						</div>
-
-						<div id="titania-container" class="satellite-container container">
-							<div id="titania" class="satellite object"></div>	
-						</div>
-
-						<div id="oberon-container" class="satellite-container container">
-							<div id="oberon" class="satellite object"></div>	
-						</div>
-					</div>
-				</div>
-
-				<!-- NEPTUNE
-				–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-				<div id="neptune-container" class="planetoid-container container">
-					<div id="neptune" class="planetoid object">
-						<div id="triton-container" class="satellite-container container">
-							<div id="triton" class="satellite object"></div>	
-						</div>
-					</div>
-				</div>
-
-				<!-- PLUTO
-				–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-				<div id="pluto-container" class="planetoid-container container">
-					<div id="pluto" class="planetoid object">
-						<div id="charon-container" class="satellite-container container">
-							<div id="charon" class="satellite object"></div>	
-						</div>
-					</div>
-				</div>
-
-				<!-- KUIPER BELT
-				–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-				<div id="kuiper-belt" class="asteroid-belt"></div>
-
-				<!-- TCHOURI
-				–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-				<div id="tchouri-container" class="asteroid-container container">
-					<div id="tchouri" class="asteroid object"></div>	
-				</div>
-			</div>
-
-		</article>
-
-		<article id="descriptions">
-
-			<!-- SUN DESC
+        <!-- CARD
 			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="sun-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Le Soleil</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/sun_desc.jpg" class="desc-img" title="Eruption solaire capturée par l'Observatoire de la Dynamique Solaire en 2012"></div>				
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 1,9891×10³⁰ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon:</span> 696 342 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 6,0877×10¹² km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 617,54 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période galactique:</span> 2,26×10⁸ a</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 27,28 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température du noyau:</span> 15,1 MK</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température de surface:</span> 5 750 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance du centre galactique:</span> 2,50×10¹⁷ km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Composition:</span> Hydrogène: 73,46 %, Hélium: 24,85 %</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Satellites principaux:</span> <span id="mercury-link1" class="object-link clickable">Mercure</span>, <span id="venus-link1" class="object-link clickable">Venus</span>, <span id="earth-link1" class="object-link clickable">Terre</span>, <span id="mars-link1" class="object-link clickable">Mars</span>, <span id="jupiter-link1" class="object-link clickable">Jupiter</span>, <span id="saturn-link1" class="object-link clickable">Saturne</span>, <span id="uranus-link1" class="object-link clickable">Uranus</span>, <span id="neptune-link1" class="object-link clickable">Neptune</span>, <span id="pluto-link1" class="object-link clickable">Pluton</span></p>
-					</div>
-				</div>
-			</div>
+        <div id="card-desc" class="desc flexed flexed-column faded-out">
+            <span class="close">×</span>
+            <h2 id="card-title" class="title"></h2>
+            <div class="card-content flexed flexed-column">
+                <div id="card-img-container"><img alt="object image" src="img/desc/sun_desc.jpg" id="card-img"></div>
+                <div id="card-infos">
+                    <div id="astronomical-catg" class="card-catg visible-catg">
+                        <p id="astronomical-mass-p" class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span id="mass-lib" class="bold data-lib">Mass: </span><data id="mass-data" class="data"></data> kg</p>
+                        <p id="astronomical-dimensions-p" class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span id="dimensions-lib" class="bold data-lib"><data id="dimensions-lib-data" class="data"></data>: </span><data id="dimensions-data" class="data"></data> km</p>
+                        <p id="astronomical-age-p" class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span id="age-lib" class="bold data-lib">Age: </span><data id="age-data" class="data"></data> years</p>
+                        <p id="astronomical-type-p" class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span id="type-lib" class="bold data-lib">Type: </span><data id="type-data" class="data"></data></p>
+                    </div>
+                    <div id="simple-catg" class="card-catg hidden-catg">
+                        <p id="simple-area-p" class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span id="area-lib" class="bold data-lib">Area: </span><data id="area-data" class="data"></data> km²</p>
+                        <p id="simple-escape-p" class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span id="escape-lib" class="bold data-lib">Escape velocity: </span><data id="escape-data" class="data"></data> km/s</p>
+                        <p id="simple-rotation-p" class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span id="rotation-lib" class="bold data-lib">Rotation Period: </span><data id="rotation-data" class="data"></data> days</p>
+                        <p id="simple-revolution-p" class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span id="revolution-lib" class="bold data-lib">Revolution Period: </span><data id="revolution-data" class="data"></data></span>
+                        </p>
+                        <p id="simple-temperature-p" class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span id="avgT-lib" class="bold data-lib">Average temperature: </span><data id="avgT-data" class="data"></data> K</p>
+                        <p id="simple-parent-p" class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span id="distp-lib" class="bold data-lib">Distance to <data id="parent-data" class="data"></data>: </span><data id="distance-data" class="data"></data> km</p>
+                        <p id="simple-gravity-p" class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span id="gravity-lib" class="bold data-lib">Gravity: </span><data id="gravity-data" class="data"></data>m/s</p>
+                        <p id="simple-atmosphere-p" class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span id="atmosphere-lib" class="bold">Atmosphere: </span><data id="atmosphere-data" class="data"></data></p>
+                    </div>
+                    <div id="star-catg" class="card-catg hidden-catg">
+                        <p id="star-specter-p" class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span id="specter-lib" class="bold data-lib">Specter: </span><data id="specter-data" class="data">GV</data></p>
+                        <p id="star-luminosity-p" class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span id="luminosity-lib" class="bold data-lib">Luminosity: </span><data id="luminosity-data" class="data">3.828×10²⁶</data>W</p>
+                        <p id="star-surface-p" class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span id="surfaceT-lib" class="bold data-lib">Surface temperature: </span><data id="surface-data" class="data">5750</data> K</p>
+                        <p id="star-core-p" class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span id="coreT-lib" class="bold data-lib">Core temperature: </span><data id="core-data" class="data">1.57×10⁷</data> K</p>
+                        <p id="star-corona-p" class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span id="coronaT-lib" class="bold data-lib">Corona temperature: </span><data id="corona-data" class="data">5×10⁶</data> K</p>
+                        <p id="star-planets-p" class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span id="planets-lib" class="bold data-lib">Planets: </span><data id="planets-data" class="data"></data></p>
+                    </div>
+                    <div id="planet-catg" class="card-catg hidden-catg">
+                        <p id="planet-moons-p" class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span id="moons-lib" class="bold">Moons: </span><data id="moons-data" class="data"></data></p>
+                    </div>
+                    <div id="compound-catg" class="card-catg hidden-catg">
+                        <p id="compound-main-p" class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span id="main-lib" class="bold">Main objects: </span><data id="main-data" class="data"></data></p>
+                    </div>
+                    <div id="asteroid-belt-catg" class="card-catg hidden-catg">
+                        <p id="asteroid-belt-location-p" class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span id="location-lib" class="bold">Location in the system: </span><data id="location-data" class="data"></data></p>
+                    </div>
+                </div>
+            </div>
+            <span id='name-follow' class='clickable follow fillfollow'>Suivre</span>
+        </div>
 
-			<!-- MERCURY DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="mercury-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Mercure</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/mercury_desc.jpg" class="desc-img" title="Mercure photographiée par la sonde MESSENGER en 2009."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 330,2×10²¹ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 2 439,7 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 75×10⁶ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 4,435 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 87,96934 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 58,6462 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 442 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance au <span id="sun-link1" class="object-link clickable">Soleil</span>:</span> 46 - 70×10⁶ km</p>
-					</div>
-				</div>
-				<span id="mercury-follow" class="clickable follow">Suivre</span>
-			</div>
+    </article>
 
-			<!-- VENUS DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="venus-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Venus</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/venus_desc.jpg" class="desc-img" title="La surface de Venus photographiée par la sonde Venera en 1981."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 4,8685×10²⁴ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 6 051,8 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 460×10⁶ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 10,46 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 224,701 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> -243,023 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 735 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance au <span id="sun-link2" class="object-link clickable">Soleil</span>:</span> 107 - 109×10⁶ km</p>
-					</div>
-				</div>
-				<span id="venus-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- EARTH DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="earth-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">La Terre</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/earth_desc.jpg" class="desc-img" title="La Terre vue de l'ISS le 21 Juillet 2003."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 5,9736×10²⁴ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 6 378,137 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 510×10⁶ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 11,186 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 365,256363 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 0,99726949 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 288,15 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance au <span id="sun-link3" class="object-link clickable">Soleil</span>:</span> 149,6×10⁶ km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Satellites principaux:</span> <span id="moon-link" class="object-link clickable">Lune</span></p>
-					</div>
-				</div>
-				<span id="earth-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- MOON DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="moon-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">La Lune</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/moon_desc.jpg" class="desc-img" title="La surface de la Lune photographiée durant une mission habitée."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 7,3477×10²² kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 1 737,4 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 37×10⁶ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 2,38 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 27,321582 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 27,321582 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 250 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance à la <span id="earth-link2" class="object-link clickable">Terre</span>:</span> 400 000 km</p>
-					</div>
-				</div>
-				<span id="moon-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- MARS DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="mars-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Mars</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/mars_desc.jpg" class="desc-img" title="La surface de Mars photographiée par le rover Curiosity en février 2013."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 641,85×10²¹ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 3 396,2 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 144×10⁶ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 5,027 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 686,9601 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 1,025957 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 210 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance au <span id="sun-link4" class="object-link clickable">Soleil</span>:</span> 206,6 - 249,2×10⁶ km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Satellites principaux:</span> <span id="phobos-link" class="object-link clickable">Phobos</span>, <span id="deimos-link" class="object-link clickable">Deimos</span></p>
-					</div>
-				</div>
-				<span id="mars-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- PHOBOS DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="phobos-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Phobos</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/phobos_desc.jpg" class="desc-img" title="Pôle nord de Phobos photographié par une sonde de l'agence spatiale européenne."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 1,072×10¹⁶ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Dimensions:</span> 26,8 × 21,6 × 18,4 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 0.365 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 0.365 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 233 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance à <span id="mars-link2" class="object-link clickable">Mars</span>:</span> 9 377 km</p>
-					</div>
-				</div>
-				<span id="phobos-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- DEIMOS DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="deimos-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Deimos</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/deimos_desc.jpg" class="desc-img" title="Deimos vu par la sonde Viking 1."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 1,48×10¹⁵ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Dimensions:</span> 15 × 12 × 10.4 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 1.096 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 1.096 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 233 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance à <span id="mars-link3" class="object-link clickable">Mars</span>:</span> 23 460 km</p>
-					</div>
-				</div>
-				<span id="deimos-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- ASTEROID BELT DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="asteroid-belt-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">La ceinture d'astéroïdes</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/asteroid_belt_desc.jpg" class="desc-img" title="Plusieurs astéroïdes présentes dans la ceinture."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 3,0-3,6×10²¹ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Nombre d'astéroïdes connues:</span> plusieurs centaines de milliers</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Nombre estimé d'astéroïdes:</span> plusieurs millions</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Astéroïdes principales:</span> Cérès, Vesta, Phallas, Hygée</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance moyenne séparant chaque astéroïde:</span> 1×10⁶</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance au <span id="sun-link5" class="object-link clickable">Soleil</span>:</span> varie en fonction de l'astéroïde, 254,3 - 673.2×10⁶</p>
-					</div>
-				</div>
-			</div>
-
-			<!-- JUPITER DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="jupiter-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Jupiter</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/jupiter_desc.jpg" class="desc-img" title="Pôle sud de Jupiter vu par la sonde Juno durant l'été 2016."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 1,8986×10²⁷ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 71 492 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 6,14×10¹⁰ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 	59,5 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 4 335,3545 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 0,41351 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température de surface:</span> 112 - 165 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance au <span id="sun-link6" class="object-link clickable">Soleil</span>:</span> 778,4×10⁶ km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Satellites principaux:</span> <span id="io-link" class="object-link clickable">Io</span>, <span id="europa-link" class="object-link clickable">Europe</span>, <span id="ganymede-link" class="object-link clickable">Ganymède</span>, <span id="callisto-link" class="object-link clickable">Callisto</span></p>
-					</div>
-				</div>
-				<span id="jupiter-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- IO DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="io-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Io</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/io_desc.jpg" class="desc-img" title="La surface de Io photographiée par la sonde Galileo en 1997."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 	8,93×10²² kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 1821,6 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 41×10⁶ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 2,6 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 1,769 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 1,769 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 130 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance à <span id="jupiter-link2" class="object-link clickable">Jupiter</span>:</span> 421 800 km</p>
-					</div>
-				</div>
-				<span id="io-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- EUROPA DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="europa-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Europe</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/europa_desc.jpg" class="desc-img" title="Mosaïque d'Europe prise par la sonde Galileo."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 4,8×10²² kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 1560,8 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 30,9×10⁶ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 2 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 3,551181 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 3,551181 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 125 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance à <span id="jupiter-link3" class="object-link clickable">Jupiter</span>:</span> 671 100 km</p>
-					</div>
-				</div>
-				<span id="europa-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- GANYMEDE DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="ganymede-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Ganymède</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/ganymede_desc.jpg" class="desc-img" title="Ganymède photographiée par la sonde Galileo en 1996."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 14,819x10²² kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 2631,2 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 86,99×10⁶ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 2,742 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 7,1545529 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 7,1545529 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 110 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance à <span id="jupiter-link4" class="object-link clickable">Jupiter</span>:</span> 1 070 400 km</p>
-					</div>
-				</div>
-				<span id="ganymede-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- CALLISTO DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="callisto-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Callisto</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/callisto_desc.jpg" class="desc-img" title="Le cratère Valhalla à la surface de Callisto par la sonde Galileo en 1997."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 10,75938x10²² kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 2410,15 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 73×10⁶ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 2.440 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 16,6890184 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 16,6890184 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 134 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance à <span id="jupiter-link5" class="object-link clickable">Jupiter</span>:</span> 1 882 700 km</p>
-					</div>
-				</div>
-				<span id="callisto-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- SATURN DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="saturn-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Saturne</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/saturn_desc.jpg" class="desc-img" title="Saturne photographiée par la sonde Cassini."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 568,46×10²⁴ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 58 232 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 4,3466×10¹⁰ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 	35,5 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 10 757,7365 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 0,448 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température de surface:</span> 84 - 134 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance au <span id="sun-link7" class="object-link clickable">Soleil</span>:</span> 1 429,39×10⁶ km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Satellites principaux:</span> <span id="mimas-link" class="object-link clickable">Mimas</span>, <span id="enceladus-link" class="object-link clickable">Encelade</span>, <span id="tethys-link" class="object-link clickable">Tethys</span>, <span id="dione-link" class="object-link clickable">Dione</span>, <span id="rhea-link" class="object-link clickable">Rhea</span>, <span id="titan-link" class="object-link clickable">Titan</span>, <span id="iapetus-link" class="object-link clickable">Iapetus</span></p>
-					</div>
-				</div>
-				<span id="saturn-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- MIMAS DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="mimas-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Mimas</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/mimas_desc.jpg" class="desc-img" title="Mimas et son cratère Herschel par la sonde Cassini en 2010."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 3,84×10×10¹⁹ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 198,2 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 500 000 km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 0,159 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 0,942 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 0,942 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 64 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance à <span id="saturn-link2" class="object-link clickable">Saturne</span>:</span> 185 520 km</p>
-					</div>
-				</div>
-				<span id="mimas-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- ENCELADUS DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="enceladus-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Encelade</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/enceladus_desc.jpg" class="desc-img" title="Encelade photograpphiée par la sonde Cassini."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 10,794×10¹⁹ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 252,1 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 798 648,27 km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 0,239 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 1,370218 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 1,370218 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 75 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance à <span id="saturn-link3" class="object-link clickable">Saturne</span>:</span> 238 037 km</p>
-					</div>
-				</div>
-				<span id="enceladus-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- TETHYS DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="tethys-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Tethys</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/tethys_desc.jpg" class="desc-img" title="Tethys et la vallée Ithaca Chasma vu par Cassini."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 61,755×10¹⁹ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 533 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 3,569×10⁶ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 0,394 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 1,887 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 1,887 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 86 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance à <span id="saturn-link4" class="object-link clickable">Saturne</span>:</span> 294 672 km</p>
-					</div>
-				</div>
-				<span id="tethys-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- DIONE DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="dione-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Dione</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/dione_desc.jpg" class="desc-img" title="Survol de Dione par la sonde Cassini, on distingue également les anneaux de Saturne en arrière plan."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 109,57×10¹⁹ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 561,7 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 3,964×10⁶ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 0,510 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 2,737 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 2,737 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 87 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance à <span id="saturn-link5" class="object-link clickable">Saturne</span>:</span> 377 415 km</p>
-					</div>
-				</div>
-				<span id="dione-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- RHEA DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="rhea-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Rhea</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/rhea_desc.jpg" class="desc-img" title="Rhea approchée par la sonde Cassini en Mars 2013."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 230,709×10¹⁹ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 764,3 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 7,340×10⁶ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 0,635 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 4,518 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 4,518 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 76 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance à <span id="saturn-link6" class="object-link clickable">Saturne</span>:</span> 527 068 km</p>
-					</div>
-				</div>
-				<span id="rhea-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- TITAN DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="titan-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Titan</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/titan_desc.jpg" class="desc-img" title="La surface de Titan vue par la sonde Huygens lors de sa descente en 2005."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 1 345,5×10²⁰ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 2 574,7 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 83,305×10⁶ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 2,639 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 15,945 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 15,945 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 94 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance à <span id="saturn-link7" class="object-link clickable">Saturne</span>:</span> 1 221 865 km</p>
-					</div>
-				</div>
-				<span id="titan-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- IAPETUS DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="iapetus-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Iapetus</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/iapetus_desc.jpg" class="desc-img" title="La crête équatoriale de Iapetus photographiée par la sonde Cassini."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 18,059×10²⁰ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 735,6 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 6,79×10⁶ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 0,573 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 79,3215 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 79,3215 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 90 - 130 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance à <span id="saturn-link8" class="object-link clickable">Saturne</span>:</span> 3 560 851 km</p>
-					</div>
-				</div>
-				<span id="iapetus-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- URANUS DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="uranus-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Uranus</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/uranus_desc.jpg" class="desc-img" title="Croissant d'Uranus vu par la sonde Voyager 2."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 8,6810×10²⁵ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 25 362 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 8,0831×10⁹ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 	21,3 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 30 684.,653 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> -0,731 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température de surface:</span> 57 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance au <span id="sun-link8" class="object-link clickable">Soleil</span>:</span> 2 870,39×10⁶ km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Satellites principaux:</span> <span id="miranda-link" class="object-link clickable">Miranda</span>, <span id="ariel-link" class="object-link clickable">Ariel</span>, <span id="umbriel-link" class="object-link clickable">Umbriel</span>, <span id="titania-link" class="object-link clickable">Titania</span>, <span id="oberon-link" class="object-link clickable">Oberon</span></p>
-					</div>
-				</div>
-				<span id="uranus-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- MIRANDA DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="miranda-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Miranda</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/miranda_desc.jpg" class="desc-img" title="Survol de Miranda par la sonde Voyager 2."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 65,941×10¹⁸ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 235,8 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 698 710,82 km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 0,193 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 1,38 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 1,38 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 60 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance à <span id="uranus-link2" class="object-link clickable">Uranus</span>:</span> 129 900 km</p>
-					</div>
-				</div>
-				<span id="miranda-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- ARIEL DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="ariel-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Ariel</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/ariel_desc.jpg" class="desc-img" title="Mosaïque d'Ariel obtenue par la sonde Voyager 2."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 12,948×10²⁰ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 578,9 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 4,211×10⁶ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 0,559 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 2,484 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 2,484 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 60 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance à <span id="uranus-link3" class="object-link clickable">Uranus</span>:</span> 190 900 km</p>
-					</div>
-				</div>
-				<span id="ariel-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- UMBRIEL DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="umbriel-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Umbriel</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/umbriel_desc.jpg" class="desc-img" title="Umbriel vue par la sonde Voyager 2 en 1986."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 12,214×10²⁰ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 584,7 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 4,296×10⁶ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 0,52 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 4,018 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 4,018 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 75 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance à <span id="uranus-link4" class="object-link clickable">Uranus</span>:</span> 266 000 km</p>
-					</div>
-				</div>
-				<span id="umbriel-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- TITANIA DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="titania-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Titania</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/titania_desc.jpg" class="desc-img" title="Titania vue par la sonde Voyager 2."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 34,200×10²⁰ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 788,9 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 7,820×10⁶ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 0,773 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 8,766 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 8,766 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 70 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance à <span id="uranus-link5" class="object-link clickable">Uranus</span>:</span> 436 300 km</p>
-					</div>
-				</div>
-				<span id="titania-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- OBERON DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="oberon-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Oberon</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/oberon_desc.jpg" class="desc-img" title="Oberon photographié par Voyager 2."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 28,834×10²⁰ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 761,4 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 7,285×10⁶ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 0,727 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 13,149 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 13,149 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 70 - 80 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance à <span id="uranus-link6" class="object-link clickable">Uranus</span>:</span> 583 500 km</p>
-					</div>
-				</div>
-				<span id="oberon-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- NEPTUNE DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="neptune-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Neptune</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/neptune_desc.jpg" class="desc-img" title="Nuages dans l'atmosphère de Neptune observé par la sonde Voyager 2."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 10,241×10²⁵ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 24 622 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 7,6183×10⁹ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 	23,5 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 60 189,548 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 0,6713 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température de surface:</span> 55 - 72 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance au <span id="sun-link9" class="object-link clickable">Soleil</span>:</span> 4 498,39×10⁶ km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Satellites principaux:</span> <span id="triton-link" class="object-link clickable">Triton</span></p>
-					</div>
-				</div>
-				<span id="neptune-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- TRITON DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="triton-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Triton</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/triton_desc.jpg" class="desc-img" title="Triton et sa surface gelée immortalisés par la sonde Voyager 2."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 213,95×10²⁰ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 1 353,4 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 23,017×10⁶ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 1,455 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 7,305 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 7,305 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 38 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance à <span id="neptune-link2" class="object-link clickable">Neptune</span>:</span> 354 759 km</p>
-					</div>
-				</div>
-				<span id="triton-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- PLUTON DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="pluto-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Pluton</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/pluto_desc.jpg" class="desc-img" title="Coucher de soleil sur Pluton mettant en valeur ses montagnes et ses plaines gelées. Photographie effectuée par la sonde New Horizons en 2015."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 13,090×10²¹ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 1 151 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 16,647×10⁶ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 	1,212 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 90 589,305 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 6,387 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température de surface:</span> 44 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance au <span id="sun-linka" class="object-link clickable">Soleil</span>:</span> 5 906,44×10⁶ km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Satellites principaux:</span> <span id="charon-link" class="object-link clickable">Charon</span></p>
-					</div>
-				</div>
-				<span id="pluto-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- CHARON DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="charon-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">Charon</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/charon_desc.jpg" class="desc-img" title="Charon photographié par la sonde New Horizons en 2015."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 15,86×10²⁰ kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Rayon équatorial:</span> 603,6 km</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Superficie:</span> 4,578×10⁶ km²</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 0,59 km/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 6,387 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 6,387 j</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne:</span> 53 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance à <span id="pluto-link2" class="object-link clickable">Pluton</span>:</span> 17 536 km</p>
-					</div>
-				</div>
-				<span id="charon-follow" class="clickable follow">Suivre</span>
-			</div>
-
-			<!-- KUIPER BELT DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="kuiper-belt-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">La ceinture de Kuiper</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/kuiper_belt_desc.jpg" class="desc-img" title="Plusieurs objets appartenant à la ceinture de Kuiper."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> ~ 1/10 de masse Terrestre kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Nombre d'objets de plus de 100km de diamètre:</span> + 70 000</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Objets principaux:</span> Makemake, Haumea, Eris</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température moyenne de la ceinture:</span> 50 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Composition des objets de la ceinture:</span> hydrocarbures légers (méthane, ammoniac, etc)</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance au <span id="sun-linkb" class="object-link clickable">Soleil</span>:</span> varie en fonction de l'objet, 4,487 - 8,227×10⁹ km</p>
-					</div>
-				</div>
-			</div>
-
-			<!-- TCHOURI DESC
-			–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div id="tchouri-desc" class="desc flexed flexed-column faded-out">
-				<span class="close">X</span>
-				<h2 class="desc-title">67P/Tchourioumov</h2>
-				<div class="desc-corpse flexed flexed-column">
-					<div class="desc-img-container"><img alt="" src="img/desc/tchouri_desc.jpg" class="desc-img" title="La comète Tchouri vu de la sonde Rosetta en 2014."></div>
-					<div class="desc-infos">
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Masse:</span> 9,982×10¹² kg</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Vitesse de libération:</span> 	1 m/s</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de révolution:</span> 6,44 a</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Période de rotation:</span> 12,4043 h</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Température de surface:</span> 180 - 230 K</p>
-						<p class="desc-p"><span class="glyphicon glyphicon-triangle-right"></span><span class="bold">Distance au <span id="sun-linkc" class="object-link clickable">Soleil</span>:</span> 518,060×10⁶ km</p>
-					</div>
-				</div>
-				<span id="tchouri-follow" class="clickable follow">Suivre</span>
-			</div>
-
-		</article>
-
-		<!-- JAVASCRIPT
+    <!-- JAVASCRIPT
 		–––––––––––––––––––––––––––––––––––––––––––––––––– -->
-		<script src="MFG/js/mfg.js"></script>
-		<script src="MFG/js/class/DOMElementVector.class.js"></script>
-		<script src="js/solar_system.js"></script>
-	</body>
+    <script src="MFG/js/mfg.js"></script>
+    <script src="MFG/js/class/DOMElementVector.class.js"></script>
+    <script src="js/class/AstronomicalObject.class.js"></script>
+    <script src="js/class/SimpleObject.class.js"></script>
+    <script src="js/class/Moon.class.js"></script>
+    <script src="js/class/SystemDirectObject.class.js"></script>
+    <script src="js/class/Star.class.js"></script>
+    <script src="js/class/Planet.class.js"></script>
+    <script src="js/class/CompoundObject.class.js"></script>
+    <script src="js/class/AsteroidBelt.class.js"></script>
+    <script src="js/class/System.class.js"></script>
+    <script src="js/solar_system.js"></script>
+</body>
 
 </html>

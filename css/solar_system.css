@@ -1,1042 +1,1286 @@
-					 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-				/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-				/* ---------------------------------- CSS SOLAR SYSTEM ---------------------------------- */
-				/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-					 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+
+/* ---------------------------------- CSS SOLAR SYSTEM ---------------------------------- */
+
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+
 /* ---------------------------------- GESTION DES GENERALITES ---------------------------------- */
+
+
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
 @font-face {
     font-family: 'Raleway';
     src: url('../fonts/Raleway-Light.ttf');
 }
 
 html {
-	width: 100%;
+    width: 100%;
 }
 
 body {
-	font-family: 'Raleway';
-	font-weight: lighter;
-	background-image: url('../img/milky_way.jpg' );
-	background-size: cover;
-	background-attachment: fixed;
-	background-position: center;
-	background-repeat: no-repeat;
-	overflow: hidden;
-	width: 6800px;
-	height: 6800px;
-	margin: 0;
-	cursor: -webkit-grab;
-	cursor: grab;
+    font-family: 'Raleway';
+    font-weight: lighter;
+    background-image: url('../img/milky_way.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 6800px;
+    height: 6800px;
+    margin: 0;
+    cursor: -webkit-grab;
+    cursor: grab;
 }
 
 body::before {
-	position: absolute; 
-	width: 0; 
-	height: 0; 
-	overflow: hidden; 
-	z-index: -1;
-	content: url('../img/milky_way.jpg') url('../img/sun.png') url('../img/planets.png') url('../img/moons.png') url('../img/mars_moons.png') url('../img/tchouri.png') url('../img/asteroid_belt.png') url('../img/asteroid_belt3.png') url('../img/saturn.png') url('../img/desc/ariel_desc.jpg') url('../img/desc/asteroid_belt_desc.jpg') url('../img/desc/asteroid_belt_desc.jpg') url('../img/desc/callisto_desc.jpg') url('../img/desc/charon_desc.jpg') url('../img/desc/deimos_desc.jpg') url('../img/desc/dione_desc.jpg') url('../img/desc/enceladus_desc.jpg') url('../img/desc/europa_desc.jpg') url('../img/desc/ganymede_desc.jpg') url('../img/desc/iapetus_desc.jpg') url('../img/desc/io_desc.jpg') url('../img/desc/jupiter_desc.jpg') url('../img/desc/kuiper_belt_desc.jpg') url('../img/desc/mars_desc.jpg') url('../img/desc/mercury_desc.jpg') url('../img/desc/mimas_desc.jpg') url('../img/desc/miranda_desc.jpg') url('../img/desc/moon_desc.jpg') url('../img/desc/neptune_desc.jpg') url('../img/desc/oberon_desc.jpg') url('../img/desc/phobos_desc.jpg') url('../img/desc/pluto_desc.jpg') url('../img/desc/rhea_desc.jpg') url('../img/desc/saturn_desc.jpg') url('../img/desc/sun_desc.jpg') url('../img/desc/tchouri_desc.jpg') url('../img/desc/tethys_desc.jpg') url('../img/desc/titan_desc.jpg') url('../img/desc/titania_desc.jpg') url('../img/desc/triton_desc.jpg') url('../img/desc/umbriel_desc.jpg') url('../img/desc/uranus_desc.jpg') url('../img/desc/venus_desc.jpg');
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    z-index: -1;
+    /*url('../img/desc/ariel_desc.jpg') url('../img/desc/asteroid_belt_desc.jpg') url('../img/desc/asteroid_belt_desc.jpg') url('../img/desc/callisto_desc.jpg') url('../img/desc/charon_desc.jpg') url('../img/desc/deimos_desc.jpg') url('../img/desc/dione_desc.jpg') url('../img/desc/enceladus_desc.jpg') url('../img/desc/europa_desc.jpg') url('../img/desc/ganymede_desc.jpg') url('../img/desc/iapetus_desc.jpg') url('../img/desc/io_desc.jpg') url('../img/desc/jupiter_desc.jpg') url('../img/desc/kuiper_belt_desc.jpg') url('../img/desc/mars_desc.jpg') url('../img/desc/mercury_desc.jpg') url('../img/desc/mimas_desc.jpg') url('../img/desc/miranda_desc.jpg') url('../img/desc/moon_desc.jpg') url('../img/desc/neptune_desc.jpg') url('../img/desc/oberon_desc.jpg') url('../img/desc/phobos_desc.jpg') url('../img/desc/pluto_desc.jpg') url('../img/desc/rhea_desc.jpg') url('../img/desc/saturn_desc.jpg') url('../img/desc/sun_desc.jpg') url('../img/desc/tchouri_desc.jpg') url('../img/desc/tethys_desc.jpg') url('../img/desc/titan_desc.jpg') url('../img/desc/titania_desc.jpg') url('../img/desc/triton_desc.jpg') url('../img/desc/umbriel_desc.jpg') url('../img/desc/uranus_desc.jpg') url('../img/desc/venus_desc.jpg')*/
+    content: url('../img/milky_way.jpg') url('../img/sun.png') url('../img/planets.png') url('../img/moons.png') url('../img/mars_moons.png') url('../img/tchouri.png') url('../img/asteroid_belt.png') url('../img/asteroid_belt2.png') url('../img/saturn.png');
 }
 
 body:active {
-	cursor: grabbing;
+    cursor: grabbing;
     cursor: -webkit-grabbing;
 }
 
-.main-title {
-	width: 100%;
-	font-size: 70px;
-	text-align: center;
-	font-weight: lighter;
-	color: rgb(230, 230, 230);
-	margin-top: 0;
-	margin-bottom: 0;
+#main-title {
+    width: 100%;
+    font-size: 70px;
+    text-align: center;
+    font-weight: lighter;
+    color: rgb(230, 230, 230);
+    margin-top: 0;
+    margin-bottom: 0;
 }
-/* ---------------------------------------------------------------------------------------------------- */
+
+.glyphicon-triangle-right {
+    font-size: 13px;
+}
+
+
 /* ---------------------------------- FIN DE GESTION DES GENERALITES ---------------------------------- */
-/* ---------------------------------------------------------------------------------------------------- */
 
 
-
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 /* ---------------------------------- GESTION DES ANIMATIONS ---------------------------------- */
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-@keyframes retro {
-	from {
-		transform: rotate(0deg);
-	}
 
-	to {
-		transform: rotate(360deg);
-	}
+@keyframes retro {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @keyframes orbit {
-	from {
-		transform: rotate(0deg);
-	}
-
-	to {
-		transform: rotate(-360deg);
-	}
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
 }
-/* --------------------------------------------------------------------------------------------------- */
+
+
 /* ---------------------------------- FIN DE GESTION DES ANIMATIONS ---------------------------------- */
-/* --------------------------------------------------------------------------------------------------- */
 
 
-
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 /* ---------------------------------- GESTION DU SYSTEME SOLAIRE ---------------------------------- */
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
 #solar-system-container {
-	width: 100%;
-	height: 100%;
-	position: relative;
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
-#solar-system {
-	width: 100%;
-	height: 100%;
-	position: relative;
+#helios-system {
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
+
+
 /* ------------------------------------------------------------------------------------------------------- */
+
+
 /* ---------------------------------- FIN DE GESTION DU SYSTEME SOLAIRE ---------------------------------- */
+
+
 /* ------------------------------------------------------------------------------------------------------- */
 
 
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+
+/* ---------------------------------- GESTION DES OBJETS CELESTES ---------------------------------- */
+
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* ---------------------------------- GESTION DES OBJETS CELESTES ---------------------------------- */
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-.object, .asteroid-belt {
-	display: block;
-	position: absolute;
-	background-size: contain;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-attachment: scroll;
-	cursor: pointer;
-	pointer-events: auto;
-	border-radius: 100%;
+
+.object {
+    display: block;
+    position: absolute;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    cursor: pointer;
+    pointer-events: auto;
+    border-radius: 100%;
 }
 
-.asteroid-belt {
-	animation: orbit 1000s linear infinite;
-	overflow: hidden;
+.asteroidbelt {
+    animation: orbit 1000s linear infinite;
+    overflow: hidden;
 }
 
 .container {
-	display: block;
-	position: absolute;
-	border-radius: 100%;
+    display: block;
+    position: absolute;
+    border-radius: 100%;
 }
 
-.planet-container, .planetoid-container {
-	border: 0.3vh solid rgba(230, 230, 230, 1);
+.planet-container {
+    border: 0.3vh solid rgba(230, 230, 230, 1);
 }
 
-.planet:not(#saturn), .planetoid {
-	background-image: url('../img/planets.png');
+.planet:not(#saturn) {
+    background-image: url('../img/planets.png');
 }
 
-.satellite-container, .asteroid-container {
-	pointer-events: none;
+.moon-container,
+.asteroid-container,
+.faded-out * {
+    pointer-events: none;
 }
 
-.satellite {
-	background-image: url('../img/moons.png');
+.moon {
+    background-image: url('../img/moons.png');
 }
+
 
 /* ======================================= SUN ======================================= */
+
 #sun {
-	left: 3160px;
-	top: 3160px;
-	width: 480px;
-	height: 480px;
-	background-image: url('../img/sun.png');
-	box-shadow: 0px 0px 90px rgb(255, 80, 0);
-	z-index: 10000;
+    left: 3160px;
+    top: 3160px;
+    width: 480px;
+    height: 480px;
+    background-image: url('../img/sun.png');
+    box-shadow: 0px 0px 90px rgb(255, 80, 0);
+    z-index: 10000;
 }
+
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FIN SUN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
+
 /* @@@@@@@@@@@@@@@@ */
+
+
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+
 /* Calcul rotation planètes: (s / 63000) / 2 */
+
+
 /* Calcul rotation satellites: (s / 6300) / 2*/
+
+
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+
 /* @@@@@@@@@@@@@@@@ */
+
 
 /* ======================================= MERCURY ======================================= */
+
+
 /* Période de révolution Mercure: 7600608sec = 2111.28h = 87.97j = 12.533s = 2.88m = 0.24a*/
+
 #mercury-container {
-	width: 650px;
-	height: 650px;
-	left: 3075px;
-	top: 3075px;
-	animation: orbit 60.32s linear infinite;
-	z-index: 9990;
+    width: 650px;
+    height: 650px;
+    left: 3075px;
+    top: 3075px;
+    animation: orbit 60.32s linear infinite;
+    z-index: 9990;
 }
 
+
 /* Période de rotation Mercure: 5047200sec = 1402h = 59j = 8.349s = 1.92m = 0.16a*/
+
 #mercury {
-	bottom: 65px;
-	left: 100px;
-	width: 26px;
-	height: 26px;
-	background-position: 0px 0px;
-	background-size: 208px 26px;
-	/*animation: orbit 1407.5s linear infinite;*/
+    bottom: 65px;
+    left: 100px;
+    width: 26px;
+    height: 26px;
+    background-position: 0px 0px;
+    background-size: 208px 26px;
+    /*animation: orbit 1407.5s linear infinite;*/
 }
+
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FIN MERCURY ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 
 /* ======================================= VENUS ======================================= */
+
+
 /* Période de révolution Vénus: 19565712sec = 5434.92h = 226.455j = 32.351s = 7.44m = 0.62a*/
+
 #venus-container {
-	width: 850px;
-	height: 850px;
-	left: 2975px;
-	top: 2975px;
-	animation: orbit 155.3s linear infinite; 
-	z-index: 9980;
+    width: 850px;
+    height: 850px;
+    left: 2975px;
+    top: 2975px;
+    animation: orbit 155.3s linear infinite;
+    z-index: 9980;
 }
 
+
 /* Période de rotation Vénus: -21143592sec = -5873.22h = -244.718j = -34.96s = -8.04m = -0.67a*/
+
 #venus {
-	bottom: 108px;
-	right: 85px;
-	width: 57px;
-	height: 57px;
-	background-position: -57px 0px;
-	background-size: 456px 57px;
-	/*animation: retro 155s linear infinite;*/
+    bottom: 108px;
+    right: 85px;
+    width: 57px;
+    height: 57px;
+    background-position: -57.3px 0px;
+    background-size: 456px 57px;
+    /*animation: retro 155s linear infinite;*/
 }
+
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FIN VENUS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 
 /* ======================================= EARTH ======================================= */
+
+
 /* Période de révolution Terre: 31557600sec = 8766h = 365.25j = 52.179s = 12.0m = 1a */
+
 #earth-container {
-	width: 1100px;
-	height: 1100px;
-	left: 2850px;
-	top: 2850px;
-	animation: orbit 250.46s linear infinite;
-	z-index: 9970;
+    width: 1100px;
+    height: 1100px;
+    left: 2850px;
+    top: 2850px;
+    animation: orbit 250.46s linear infinite;
+    z-index: 9970;
 }
+
 
 /* Période de rotation Terre: 86400sec = 24h = 1j = 0.143s = 0.033m = 0.00274a */
+
 #earth {
-	top: 300px;
-	right: 10px;
-	width: 70px;
-	height: 70px;
-	background-position: -140.3px 0px;
-	background-size: 561.6px 70.2px;
-	/*animation: retro 250s linear infinite;*/
+    top: 300px;
+    right: 10px;
+    width: 70px;
+    height: 70px;
+    background-position: -140.5px 0px;
+    background-size: 561.6px 70.2px;
+    /*animation: retro 250s linear infinite;*/
 }
+
 
 /* Période de révolution Lune: 2209032sec = 613.62h = 25.568j = 3.652s = 0.84m = 0.07a */
+
 #moon-container {
-	width: 100px;
-	height: 100px;
-	left: -15px;
-	top: -15px;
-	animation: orbit 175s linear infinite;
-	z-index: 9969;
+    width: 100px;
+    height: 100px;
+    left: -15px;
+    top: -15px;
+    animation: orbit 175s linear infinite;
+    z-index: 9969;
 }
 
+
 /* Période de rotation Lune: 2209032sec = 613.62h = 25.568j = 3.652s = 0.84m = 0.07a */
+
 #moon {
-	top: 80px;
-	left: 0;
-	width: 18px;
-	height: 18px;
-	background-position: 0px 0.5px;
-	background-size: 126px 109px;
+    top: 80px;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    background-position: 0px 0.5px;
+    background-size: 126px 109px;
 }
+
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FIN EARTH ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 
 /* ======================================= MARS ======================================= */
+
+
 /* Période de révolution Mars: 59328288sec = 16480.08h = 686.67j = 98.096s = 22.56m = 1.88a */
+
 #mars-container {
-	width: 1400px;
-	height: 1400px;
-	left: 2700px;
-	top: 2700px;
-	animation: orbit 470.86s linear infinite;
-	z-index: 9960;
+    width: 1400px;
+    height: 1400px;
+    left: 2700px;
+    top: 2700px;
+    animation: orbit 470.86s linear infinite;
+    z-index: 9960;
 }
+
 
 /* Période de rotation Mars: 88362sec = 24.545h = 1.023j = 0.146s = 0.034m = 0.0028a */
+
 #mars {
-	bottom: 400px;
-	right: 38px;
-	width: 40px;
-	height: 40px;
-	background-position: -119.7px 0px;
-	background-size: 320px 40px;
-	/*animation: orbit 24.4s linear infinite;*/
+    bottom: 400px;
+    right: 38px;
+    width: 40px;
+    height: 40px;
+    background-position: -120px 0px;
+    background-size: 320px 40px;
+    /*animation: orbit 24.4s linear infinite;*/
 }
+
 
 /* Période de révolution Phobos: 31557,6sec = 8.766h = 0.365j = 0.052s = 0.012m = 0,001a */
+
 #phobos-container {
-	width: 43px;
-	height: 43px;
-	left: -1.5px;
-	top: -1.5px;
-	animation: orbit 2.5s linear infinite; 
-	z-index: 9959;
+    width: 43px;
+    height: 43px;
+    left: -1.5px;
+    top: -1.5px;
+    animation: orbit 2.5s linear infinite;
+    z-index: 9959;
 }
 
-#phobos, #deimos {
-	background-image: url('../img/mars_moons.png');
+#phobos,
+#deimos {
+    background-image: url('../img/mars_moons.png');
 }
+
 
 /* Période de rotation Phobos: 31557,6sec = 8.766h = 0.365j = 0.052s = 0.012m = 0,001a */
+
 #phobos {
-	top: 2px;
-	left: 2px;
-	width: 4px;
-	height: 3.2px;
-	background-position: -4px -0.2px;
-	background-size: 7.7px 3.3px;
+    top: 2px;
+    left: 2px;
+    width: 4px;
+    height: 3.2px;
+    background-position: -4px -0.2px;
+    background-size: 7.7px 3.3px;
 }
+
 
 /* Période de révolution Deimos: 94672,8sec = 26.298h = ‎1.096j = 0.157s = 0.036m = 0.003a */
+
 #deimos-container {
-	width: 54px;
-	height: 54px;
-	left: -7px;
-	top: -7px;
-	animation: orbit 7.5s linear infinite; /* 26.298 * 2 = 15.32 */
-	z-index: 9959;
+    width: 54px;
+    height: 54px;
+    left: -7px;
+    top: -7px;
+    animation: orbit 7.5s linear infinite;
+    /* 26.298 * 2 = 15.32 */
+    z-index: 9959;
 }
 
+
 /* Période de rotation Deimos: 94672,8sec = 26.298h = ‎1.096j = 0.157s = 0.036m = 0.003a */
+
 #deimos {
-	top: 2px;
-	left: 2px;
-	width: 3px;
-	height: 2.5px;
-	background-position: 0px 0px;
-	background-size: 5.5px 2.3px;
+    top: 2px;
+    left: 2px;
+    width: 3px;
+    height: 2.5px;
+    background-position: 0px 0px;
+    background-size: 5.5px 2.3px;
 }
+
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FIN MARS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 
 /* ======================================= ASTEROID BELT ======================================= */
+
 #asteroid-belt {
-	background-image: url('../img/asteroid_belt.png');
-	width: 1800px;
-	height: 1800px;
-	left: 2500px;
-	top: 2500px;
-	z-index: 9950;
+    background-image: url('../img/asteroid_belt.png');
+    width: 1800px;
+    height: 1800px;
+    left: 2500px;
+    top: 2500px;
+    z-index: 9950;
 }
+
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FIN ASTEROID BELT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 
 /* ======================================= JUPITER ======================================= */
+
+
 /* Période de révolution Jupiter: 374273136sec = 103 964.76h = 4331.865j = 618.838s = 142.32m = 11.86a */
+
 #jupiter-container {
-	width: 2300px;
-	height: 2300px;
-	left: 2250px;
-	top: 2250px;
-	animation: orbit 2970.42s linear infinite;
-	z-index: 9940;
+    width: 2300px;
+    height: 2300px;
+    left: 2250px;
+    top: 2250px;
+    animation: orbit 2970.42s linear infinite;
+    z-index: 9940;
 }
+
 
 /* Période de rotation Jupiter: 35344,8sec = 9.818h = 0.409j = 0.058s = 0.013m = 0.00112a */
+
 #jupiter {
-	top: 950px;
-	left: -130px;
-	width: 260px;
-	height: 260px;
-	animation: retro 2970s linear infinite;
-	background-position: -1037.5px 0px;
-	background-size: 2080px 260px;
+    top: 950px;
+    left: -125px;
+    width: 255px;
+    height: 255px;
+    animation: retro 2970s linear infinite;
+    background-position: -1040px 0px;
+    background-size: 2080px 260px;
 }
+
 
 /* Période de révolution Io: 153054sec = 42.515h = 1.771j = 0.253s = 0.058m = 0.00485a */
+
 #io-container {
-	width: 254px;
-	height: 254px;
-	left: 3px;
-	top: 3px;
-	animation: orbit 12s linear infinite;
-	z-index: 9939;
+    width: 254px;
+    height: 254px;
+    left: 3px;
+    top: 3px;
+    animation: orbit 12s linear infinite;
+    z-index: 9939;
 }
+
 
 /* Période de rotation Io: 153054sec = 42.515h = 1.771j = 0.253s = 0.058m = 0.00485a */
+
 #io {
-	top: 2px;
-	left: 2px;
-	width: 18px;
-	height: 18px;
-	background-position: 0px -18px;
-	background-size: 126px 109px;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    background-position: 0px -18px;
+    background-size: 126px 109px;
 }
+
 
 /* Période de révolution Europe: 315576sec = 87.66h = 3.653j = 0.522s = 0.12m = 0.01a */
+
 #europa-container {
-	width: 316px;
-	height: 316px;
-	left: -23px;
-	top: -23px;
-	animation: orbit 25s linear infinite;
-	z-index: 9938;
+    width: 316px;
+    height: 316px;
+    left: -23px;
+    top: -23px;
+    animation: orbit 25s linear infinite;
+    z-index: 9938;
 }
+
 
 /* Période de rotation Europe: 315576sec = 87.66h = 3.653j = 0.522s = 0.12m = 0.01a */
+
 #europa {
-	top: 0px;
-	left: 0px;
-	width: 16px;
-	height: 16px;
-	background-position: -15.8px -15.7px;
-	background-size: 112px 97px;
+    top: 0px;
+    left: 0px;
+    width: 16px;
+    height: 16px;
+    background-position: -15.8px -15.7px;
+    background-size: 112px 97px;
 }
+
 
 /* Période de révolution Ganymede: 631152sec = 175.32h = 7.305j = 1.044s = 0.24m = 0.02a */
+
 #ganymede-container {
-	width: 394px;
-	height: 394px;
-	left: -67px;
-	top: -67px;
-	animation: orbit 50s linear infinite;
-	z-index: 9937;
+    width: 394px;
+    height: 394px;
+    left: -67px;
+    top: -67px;
+    animation: orbit 50s linear infinite;
+    z-index: 9937;
 }
+
 
 /* Période de rotation Ganymede: 631152sec = 175.32h = 7.305j = 1.044s = 0.24m = 0.02a */
+
 #ganymede {
-	top: 0px;
-	left: 0px;
-	width: 27px;
-	height: 27px;
-	z-index: 90;
-	background-position: -53.5px -26.9px;
-	background-size: 190px 165px;
+    top: 0px;
+    left: 0px;
+    width: 27px;
+    height: 27px;
+    z-index: 90;
+    background-position: -53.5px -26.9px;
+    background-size: 190px 165px;
 }
+
 
 /* Période de révolution Callisto: 1577880sec = 438.3h = 18.263j = 2.609s = 0.6m = 0.05a */
+
 #callisto-container {
-	width: 480px;
-	height: 480px;
-	left: -110px;
-	top: -110px;
-	animation: orbit 125s linear infinite;
-	z-index: 9936;
+    width: 480px;
+    height: 480px;
+    left: -110px;
+    top: -110px;
+    animation: orbit 125s linear infinite;
+    z-index: 9936;
 }
 
+
 /* Période de rotation Callisto: 1577880sec = 438.3h = 18.263j = 2.609s = 0.6m = 0.05a */
+
 #callisto {
-	top: 0px;
-	left: 0px;
-	width: 23px;
-	height: 23px;
-	background-position: -69px -23px;
-	background-size: 162px 140px;
+    top: 0px;
+    left: 0px;
+    width: 23px;
+    height: 23px;
+    background-position: -69px -23px;
+    background-size: 162px 140px;
 }
+
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FIN JUPITER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 
 /* ======================================= SATURN ======================================= */
+
+
 /* Période de révolution Saturne: 929686896sec = 258246.36h = 10760.265j = 1537.181s = 353.52m = 29.46a */
+
 #saturn-container {
-	width: 3300px;
-	height: 3300px;
-	left: 1750px;
-	top: 1750px;
-	animation: orbit 7378.46s linear infinite;
-	z-index: 9930;
+    width: 3300px;
+    height: 3300px;
+    left: 1750px;
+    top: 1750px;
+    animation: orbit 7378.46s linear infinite;
+    z-index: 9930;
 }
+
 
 /* Période de rotation Saturne: 37238,4sec = 10.344h = 0.431j = 0.062s = 0.014m = 0.00118a */
+
 #saturn {
-	bottom: 70px;
-	left: 700px;
-	width: 450px;
-	height: 200px;
-	background-image: url('../img/saturn.png');
-	animation: retro 7378s linear infinite;
-	/*animation: orbit 9.56s linear infinite;*/
+    bottom: 70px;
+    left: 700px;
+    width: 450px;
+    height: 200px;
+    background-image: url('../img/saturn.png');
+    animation: retro 7378s linear infinite;
+    /*animation: orbit 9.56s linear infinite;*/
 }
+
 
 /* Période de révolution Mimas: 81388.8sec = 22.608h = 0.942j = 0.1345s = 0.03094m = 0.002579a */
+
 #mimas-container {
-	width: 170px;
-	height: 170px;
-	left: 140px;
-	top: 15px;
-	animation: orbit 6s linear infinite; 
-	z-index: 9929;
+    width: 170px;
+    height: 170px;
+    left: 140px;
+    top: 15px;
+    animation: orbit 6s linear infinite;
+    z-index: 9929;
 }
+
 
 /* Période de rotation Mimas: 81388.8sec = 22.608h = 0.942j = 0.1345s = 0.03094m = 0.002579a */
+
 #mimas {
-	top: 0px;
-	left: 0px;
-	width: 6px;
-	height: 6px;
-	background-position: 0px -12px;
-	background-size: 42px 37px;
+    top: 0px;
+    left: 0px;
+    width: 6px;
+    height: 6px;
+    background-position: 0px -12px;
+    background-size: 42px 37px;
 }
+
 
 /* Période de révolution Enceladus: 118368sec = 32.88h = 1.370j = 0.1957s = 0.045m = 0.00375a */
+
 #enceladus-container {
-	width: 200px;
-	height: 200px;
-	left: 125px;
-	top: 0px;
-	animation: orbit 9s linear infinite; 
-	z-index: 9929;
+    width: 200px;
+    height: 200px;
+    left: 125px;
+    top: 0px;
+    animation: orbit 9s linear infinite;
+    z-index: 9929;
 }
+
 
 /* Période de rotation Enceladus: 118368sec = 32.88h = 1.370j = 0.1957s = 0.045m = 0.00375a */
+
 #enceladus {
-	top: 0px;
-	left: 0px;
-	width: 7px;
-	height: 7px;
-	background-position: -7px -13.8px;
-	background-size: 49px 42px;
+    top: 0px;
+    left: 0px;
+    width: 7px;
+    height: 7px;
+    background-position: -7px -13.8px;
+    background-size: 49px 42px;
 }
+
 
 /* Période de révolution Tethys: 163036.8sec = 45.288h = 1.887j = 0.269s = 0.062m = 0.0052a */
+
 #tethys-container {
-	width: 232px;
-	height: 232px;
-	left: 109px;
-	top: -16px;
-	animation: orbit 13s linear infinite; 
-	z-index: 9929;
+    width: 232px;
+    height: 232px;
+    left: 109px;
+    top: -16px;
+    animation: orbit 13s linear infinite;
+    z-index: 9929;
 }
+
 
 /* Période de rotation Tethys: 163036.8sec = 45.288h = 1.887j = 0.269s = 0.062m = 0.0052a */
+
 #tethys {
-	top: 0px;
-	left: 0px;
-	width: 10px;
-	height: 10px;
-	background-position: -20px -19.6px;
-	background-size: 70px 60.2px;
+    top: 0px;
+    left: 0px;
+    width: 10px;
+    height: 10px;
+    background-position: -20px -19.6px;
+    background-size: 70px 60.2px;
 }
+
 
 /* Période de révolution Dione: 236390.4sec = 65.664h = 2.736j = 0.39s = 0.09m = 0.0075a */
+
 #dione-container {
-	width: 280px;
-	height: 280px;
-	left: 85px;
-	top: -40px;
-	animation: orbit 19s linear infinite; 
-	z-index: 9929;
+    width: 280px;
+    height: 280px;
+    left: 85px;
+    top: -40px;
+    animation: orbit 19s linear infinite;
+    z-index: 9929;
 }
+
 
 /* Période de rotation Dione: 236390.4sec = 65.664h = 2.736j = 0.39s = 0.09m = 0.0075a */
+
 #dione {
-	top: 0px;
-	left: 0px;
-	width: 11px;
-	height: 11px;
-	background-position: -33px -22px;
-	background-size: 77.5px 67px;
+    top: 0px;
+    left: 0px;
+    width: 11px;
+    height: 11px;
+    background-position: -33px -22px;
+    background-size: 77.5px 67px;
 }
+
 
 /* Période de révolution Rhea: 390355.2sec = 108.432h = 4.518j = 0.64s = 0.148m = 0.0123a */
+
 #rhea-container {
-	width: 330px;
-	height: 330px;
-	left: 60px;
-	top: -65px;
-	animation: orbit 31s linear infinite; 
-	z-index: 9929;
+    width: 330px;
+    height: 330px;
+    left: 60px;
+    top: -65px;
+    animation: orbit 31s linear infinite;
+    z-index: 9929;
 }
 
+
 /* Période de rotation Rhea: 390355.2sec = 108.432h = 4.518j = 0.64s = 0.148m = 0.0123a */
+
 #rhea {
-	top: 0px;
-	left: 0px;
-	width: 13px;
-	height: 13px;
-	background-position: -51.9px -26px;
-	background-size: 91.5px 79px;
+    top: 0px;
+    left: 0px;
+    width: 13px;
+    height: 13px;
+    background-position: -51.9px -26px;
+    background-size: 91.5px 79px;
 }
 
 
 /* Période de révolution Titan: 1388520sec = 385.7h = 16.071j = 2.296s = 0.528m = 0.044a */
+
 #titan-container {
-	width: 390px;
-	height: 390px;
-	left: 30px;
-	top: -95px;
-	animation: orbit 110s linear infinite; 
-	z-index: 9929;
+    width: 390px;
+    height: 390px;
+    left: 30px;
+    top: -95px;
+    animation: orbit 110s linear infinite;
+    z-index: 9929;
 }
+
 
 /* Période de rotation Titan: 1388520sec = 385.7h = 16.071j = 2.296s = 0.528m = 0.044a */
+
 #titan {
-	top: 0px;
-	left: 0px;
-	width: 26px;
-	height: 26px;
-	background-position: -130px -51.6px;
-	background-size: 183px 157px;
+    top: 0px;
+    left: 0px;
+    width: 26px;
+    height: 26px;
+    background-position: -130px -51.6px;
+    background-size: 183px 157px;
 }
+
 
 /* Période de révolution Iapetus: 6942672sec = 1928.52h = 80.355j = 11.479s = 2.64m = 0.22a */
+
 #iapetus-container {
-	width: 460px;
-	height: 460px;
-	left: -5px;
-	top: -130px;
-	animation: orbit 551s linear infinite;
-	z-index: 9927;
+    width: 460px;
+    height: 460px;
+    left: -5px;
+    top: -130px;
+    animation: orbit 551s linear infinite;
+    z-index: 9927;
 }
 
+
 /* Période de rotation Iapetus: 6942672sec = 1928.52h = 80.355j = 11.479s = 2.64m = 0.22a */
+
 #iapetus {
-	top: 0px;
-	left: 0px;
-	width: 13px;
-	height: 13px;
-	background-position: -78px -26px;
-	background-size: 91.5px 79px;
+    top: 0px;
+    left: 0px;
+    width: 13px;
+    height: 13px;
+    background-position: -78px -26px;
+    background-size: 91.5px 79px;
 }
+
 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FIN SATURN ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 
 /* ======================================= URANUS ======================================= */
+
+
 /* Période de révolution Uranus: 2651153976sec = 736431.66h = 30684.653j = 4383.522s = 1008.12m = 84.01a */
+
 #uranus-container {
-	width: 4300px;
-	height: 4300px;
-	left: 1250px;
-	top: 1250px;
-	animation: orbit 21040.9s linear infinite;
-	z-index: 9920;
+    width: 4300px;
+    height: 4300px;
+    left: 1250px;
+    top: 1250px;
+    animation: orbit 21040.9s linear infinite;
+    z-index: 9920;
 }
+
 
 /* Période de rotation Uranus: -63115.2sec = -17.532h = -0.731j = -0.104s = -0.024m = -0.002a */
+
 #uranus {
-	top: 1500px;
-	right: 0px;
-	width: 150px;
-	height: 150px;
-	background-position: -748.3px 0px;
-	background-size: 1200px 150px;
-	/*animation: orbit 9.56s linear infinite;*/
+    top: 1500px;
+    right: 0px;
+    width: 150px;
+    height: 150px;
+    background-position: -748.3px 0px;
+    background-size: 1198px 150px;
+    /*animation: orbit 9.56s linear infinite;*/
 }
+
 
 /* Période de révolution Miranda: 119919.6sec = 33.311h = 1.38j = 0.198s = 0.046m = 0.0038a */
+
 #miranda-container {
-	width: 120px;
-	height: 120px;
-	left: 15px;
-	top: 15px;
-	animation: orbit 9.5s linear infinite;
-	z-index: 9919;
+    width: 120px;
+    height: 120px;
+    left: 15px;
+    top: 15px;
+    animation: orbit 9.5s linear infinite;
+    z-index: 9919;
 }
+
 
 /* Période de rotation Miranda: 119919.6sec = 33.311h = 1.38j = 0.198s = 0.046m = 0.0038a */
+
 #miranda {
-	top: 0px;
-	left: 0px;
-	width: 3px;
-	height: 3px;
-	background-position: 0px -8.8px;
-	background-size: 21px 18px;
+    top: 0px;
+    left: 0px;
+    width: 3px;
+    height: 3px;
+    background-position: 0px -8.8px;
+    background-size: 21px 18px;
 }
+
 
 /* Période de révolution Ariel: 214592.4sec = 59.609h = 2.484j = 0.355s = 0.082m = 0.0068a */
+
 #ariel-container {
-	width: 140px;
-	height: 140px;
-	left: 5px;
-	top: 5px;
-	animation: orbit 17s linear infinite;
-	z-index: 9918;
+    width: 140px;
+    height: 140px;
+    left: 5px;
+    top: 5px;
+    animation: orbit 17s linear infinite;
+    z-index: 9918;
 }
+
 
 /* Période de rotation Ariel: 214592.4sec = 59.609h = 2.484j = 0.355s = 0.082m = 0.0068a */
+
 #ariel {
-	top: 0px;
-	left: 0px;
-	width: 6.4px;
-	height: 6.4px;
-	background-position: -6.3px -19px;
-	background-size: 44.8px 38.4px;
+    top: 0px;
+    left: 0px;
+    width: 6.4px;
+    height: 6.4px;
+    background-position: -6.3px -19px;
+    background-size: 44.8px 38.4px;
 }
+
 
 /* Période de révolution Umbriel: 347133.6sec = 96.426h = 4.018j = 0.574s = 0.132m = 0.011a */
+
 #umbriel-container {
-	width: 158px;
-	height: 158px;
-	left: -4px;
-	top: -4px;
-	animation: orbit 27.5s linear infinite;
-	z-index: 9917;
+    width: 158px;
+    height: 158px;
+    left: -4px;
+    top: -4px;
+    animation: orbit 27.5s linear infinite;
+    z-index: 9917;
 }
+
 
 /* Période de rotation Umbriel: 347133.6sec = 96.426h = 4.018j = 0.574s = 0.132m = 0.011a */
+
 #umbriel {
-	top: 0px;
-	left: 0px;
-	width: 6.4px;
-	height: 6.4px;
-	background-position: -12.8px -19px;
-	background-size: 44.8px 38.4px;
+    top: 0px;
+    left: 0px;
+    width: 6.4px;
+    height: 6.4px;
+    background-position: -12.8px -19px;
+    background-size: 44.8px 38.4px;
 }
+
 
 /* Période de révolution Titania: 757382.4sec = 210.384h = 8.766j = 1.252s = 0.288m = 0.024a */
+
 #titania-container {
-	width: 190px;
-	height: 190px;
-	left: -20px;
-	top: -20px;
-	animation: orbit 60s linear infinite;
-	z-index: 9916;
+    width: 190px;
+    height: 190px;
+    left: -20px;
+    top: -20px;
+    animation: orbit 60s linear infinite;
+    z-index: 9916;
 }
+
 
 /* Période de rotation Titania: 757382.4sec = 210.384h = 8.766j = 1.252s = 0.288m = 0.024a */
+
 #titania {
-	top: 0px;
-	left: 0px;
-	width: 8.75px;
-	height: 8.75px;
-	background-position: -26.25px -26.25px;
-	background-size: 61.25px 53px;
+    top: 0px;
+    left: 0px;
+    width: 8.75px;
+    height: 8.75px;
+    background-position: -26.25px -26.25px;
+    background-size: 61.25px 53px;
 }
+
 
 /* Période de révolution Oberon: 1136073.6sec = 315.576h = 13.149j = 1.878s = 0.432m = 0.036a */
+
 #oberon-container {
-	width: 222px;
-	height: 222px;
-	left: -36px;
-	top: -36px;
-	animation: orbit 90s linear infinite;
-	z-index: 9915;
+    width: 222px;
+    height: 222px;
+    left: -36px;
+    top: -36px;
+    animation: orbit 90s linear infinite;
+    z-index: 9915;
 }
 
+
 /* Période de rotation Oberon: 1136073.6sec = 315.576h = 13.149j = 1.878s = 0.432m = 0.036a */
+
 #oberon {
-	top: 0px;
-	left: 0px;
-	width: 8.3px;
-	height: 8.3px;
-	background-position: -33.2px -24.9px;
-	background-size: 58.1px 50.5px;
+    top: 0px;
+    left: 0px;
+    width: 8.3px;
+    height: 8.3px;
+    background-position: -33.2px -24.9px;
+    background-size: 58.1px 50.5px;
 }
+
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FIN URANUS ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 
 /* ======================================= NEPTUNE ======================================= */
+
+
 /* Période de révolution Neptune: 5200376904sec = 1444549.14h = 60189.548j = 8598.507s = 1977.48m = 164.79a */
+
 #neptune-container {
-	width: 4900px;
-	height: 4900px;
-	left: 950px;
-	top: 950px;
-	animation: orbit 41272.8s linear infinite;
-	z-index: 9910;
+    width: 4900px;
+    height: 4900px;
+    left: 950px;
+    top: 950px;
+    animation: orbit 41272.8s linear infinite;
+    z-index: 9910;
 }
+
 
 /* Période de rotation Neptune: 63115.2sec = 17.532h = 0.6713j = 0.104s = 0.024m = 0.002a */
+
 #neptune {
-	bottom: 1000px;
-	right: 360px;
-	width: 134px;
-	height: 134px;
-	background-position: -802.5px 0px;
-	background-size: 1072px 134px;
-	animation: retro 41272s linear infinite;
+    bottom: 1000px;
+    right: 360px;
+    width: 134px;
+    height: 134px;
+    background-position: -802.5px 0px;
+    background-size: 1069px 134px;
+    animation: retro 41272s linear infinite;
 }
+
 
 /* Période de révolution Triton: 631152sec = 175.32h = 7.305j = 1.044s = 0.24m = 0.02a */
+
 #triton-container {
-	width: 150px;
-	height: 150px;
-	left: -8px;
-	top: -8px;
-	animation: retro 50s linear infinite;
-	z-index: 9909;
+    width: 150px;
+    height: 150px;
+    left: -8px;
+    top: -8px;
+    animation: retro 50s linear infinite;
+    z-index: 9909;
 }
 
+
 /* Période de rotation Triton: 631152sec = 175.32h = 7.305j = 1.044s = 0.24m = 0.02a */
+
 #triton {
-	top: 0px;
-	left: 0px;
-	width: 14.9px;
-	height: 14.9px;
-	background-position: 0px -59.6px;
-	background-size: 104.3px 90px;
+    top: 0px;
+    left: 0px;
+    width: 14.9px;
+    height: 14.9px;
+    background-position: 0px -59.6px;
+    background-size: 104.3px 90px;
 }
+
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FIN NEPTUNE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 
 /* ======================================= PLUTO ======================================= */
+
+
 /* Période de révolution Pluton: 7826915952sec = 2174143.32h = 90589.305j = 12941.329s = 2976.24m = 248.02a */
+
 #pluto-container {
-	width: 5200px;
-	height: 5200px;
-	left: 800px;
-	top: 800px;
-	animation: orbit 62118.4s linear infinite;
-	z-index: 9900;
+    width: 5200px;
+    height: 5200px;
+    left: 800px;
+    top: 800px;
+    animation: orbit 62118.4s linear infinite;
+    z-index: 9900;
 }
+
 
 /* Période de rotation Pluton: 631152sec = 175.32h = 6.387j = 1.044s = 0.24m = 0.02a */
+
 #pluto {
-	bottom: -7px;
-	left: 2500px;
-	width: 15px;
-	height: 15px;
-	background-position: -105px 0px;
-	background-size: 120px 15px;
-	/*animation: orbit 9.56s linear infinite;*/
+    bottom: -7px;
+    left: 2500px;
+    width: 15px;
+    height: 15px;
+    background-position: -105px 0px;
+    background-size: 120px 15px;
+    /*animation: orbit 9.56s linear infinite;*/
 }
+
 
 /* Période de révolution Charon: 631152sec = 175.32h = 6.387j = 1.044s = 0.24m = 0.02a */
+
 #charon-container {
-	width: 36px;
-	height: 36px;
-	left: -10.5px;
-	top: -10.5px;
-	animation: orbit 50s linear infinite;
-	z-index: 9899;
+    width: 36px;
+    height: 36px;
+    left: -10.5px;
+    top: -10.5px;
+    animation: orbit 50s linear infinite;
+    z-index: 9899;
 }
 
+
 /* Période de rotation Charon: 631152sec = 175.32h = 6.387j = 1.044s = 0.24m = 0.02a */
+
 #charon {
-	top: 0px;
-	left: 0px;
-	width: 6px;
-	height: 6px;
-	background-position: 0px -30.2px;
-	background-size: 42px 36.5px;
-	/*animation: orbit 400.8s linear infinite;*/
+    top: 0px;
+    left: 0px;
+    width: 6px;
+    height: 6px;
+    background-position: 0px -30.2px;
+    background-size: 42px 36.5px;
+    /*animation: orbit 400.8s linear infinite;*/
 }
+
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FIN PLUTO ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 
 /* ======================================= KUIPER BELT ======================================= */
+
 #kuiper-belt {
-	background-image: url('../img/asteroid_belt3.png');
-	width: 5800px;
-	height: 5800px;
-	left: 500px;
-	top: 500px;
-	z-index: 9890;
+    background-image: url('../img/asteroid_belt2.png');
+    width: 5800px;
+    height: 5800px;
+    left: 500px;
+    top: 500px;
+    z-index: 9890;
 }
+
+
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FIN KUIPER BELT ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 
 /* ======================================= TCHOURI ======================================= */
+
+
 /* Période de révolution Tchouri: 207333432sec = 57592.62h = 2399.693j = 342.813s = 78.84m = 6.57a */
+
 #tchouri-container {
-	width: 1700px;
-	height: 1700px;
-	left: 32%;
-	bottom: 32%;
-	animation: orbit 1645s linear infinite;
-	z-index: 9999;
+    width: 1700px;
+    height: 1700px;
+    left: 32%;
+    bottom: 32%;
+    animation: orbit 1645s linear infinite;
+    z-index: 9999;
 }
 
+
 /* Période de rotation Tchouri:  */
+
 #tchouri {
-	top: 242px;
-	left: 242px;
-	width: 14px;
-	height: 10px;
-	background-image: url('../img/tchouri.png');
+    top: 242px;
+    left: 242px;
+    width: 14px;
+    height: 10px;
+    background-image: url('../img/tchouri.png');
 }
+
+
 /* 
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ FIN TCHOURI ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
+
 /* -------------------------------------------------------------------------------------------------------- */
+
+
 /* ---------------------------------- FIN DE GESTION DES OBJETS CELESTES ---------------------------------- */
+
+
 /* -------------------------------------------------------------------------------------------------------- */
 
 
-
-
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+
 /* ---------------------------------- GESTION DES DESCRIPTIONS ---------------------------------- */
+
+
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
 .desc {
-	cursor: default;
-	position: fixed;
-	top: 2vh;
-	left: 2vw;
-	color: rgba(255, 255, 255, 1);
-	height: 85vh;
-	width: 42vw;
-	background-color: rgba(0, 0, 0, 0.95);
-	border-radius: 0.5vh;
-	z-index: 10005;
+    cursor: default;
+    position: fixed;
+    top: 2vh;
+    left: 2vw;
+    color: rgba(255, 255, 255, 1);
+    height: 85vh;
+    width: 42vw;
+    background-color: rgba(30, 30, 30, 1);
+    z-index: 10005;
 }
 
 .close {
-	position: absolute;
-	right: 1vw;
-	top: 1vh;
-	width: 3vh;
-	height: 3vh;
-	line-height: 3vh;
-	font-size: 2vh;
-	font-weight: bold;
-	cursor: pointer;
-	text-align: center;
-	border-radius: 100%;
-	transition: background-color 0.3s linear;
+    position: absolute;
+    right: 1vw;
+    top: 1vh;
+    width: 3vh;
+    height: 3vh;
+    line-height: 3vh;
+    font-size: 5vh;
+    font-weight: lighter;
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    text-align: center;
+    border-radius: 100%;
+    transition: color 0.3s linear;
 }
 
 .close:hover {
-	background-color: rgba(80, 80, 80, 1);
+    color: rgba(255, 255, 255, 0.9);
 }
 
-.desc-title {
-	text-align: center;
-	font-size: 6vh;
-	margin-bottom: 2vh;
-	margin-top: 0;
-	font-weight: lighter;
+#card-title {
+    text-align: center;
+    font-size: 6vh;
+    margin-bottom: 2vh;
+    margin-top: 0;
+    font-weight: lighter;
 }
 
-.desc-corpse {
-	height: 85%;
-	width: 100%;
+.card-content {
+    height: 85%;
+    width: 100%;
 }
 
-.desc-img-container {
-	text-align: center;
-	height: 50%;
-	position: relative;
-	display: block;
+#card-img-container {
+    text-align: center;
+    height: 50%;
+    position: relative;
+    display: block;
 }
 
-.desc-img {
-	max-height: 100%;
-	max-width: 95%;
+#card-img {
+    max-height: 100%;
+    max-width: 95%;
 }
 
-.desc-infos {
-	width: 100%;
-	height: 50%;
-	position: relative;
-	display: block;
-	overflow-y: auto;
-	overflow-x: hidden;
-}	
+#card-infos {
+    width: 100%;
+    height: 50%;
+    position: relative;
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
 
 .desc-p {
-	width: 100%;
-	text-align: left;
-	margin-left: 2vw;
-	font-size: 2vh;
-	margin-top: 2vh;
-	margin-bottom: 2vh;
-	font-weight: lighter;
+    width: 100%;
+    text-align: left;
+    margin-left: 2vw;
+    font-size: 2vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    font-weight: lighter;
 }
 
-.follow, .unfollow {
-	position: relative;
-	display: block;
-	text-align: center;
+.follow,
+.unfollow {
+    position: relative;
+    display: block;
+    text-align: center;
 }
 
 .clickable {
-	font-size: 2.5vh;
-	text-decoration: none;
-	color: rgba(0, 128, 255, 1);
+    font-size: 2vh;
+    text-decoration: none;
+    color: rgba(0, 128, 255, 1);
 }
 
 .clickable:hover {
-	cursor: pointer;
-	color: rgba(153, 204, 255, 1);
-	transition: 0.3s;
+    cursor: pointer;
+    color: rgba(153, 204, 255, 1);
+    transition: 0.3s;
+}
+
+.hidden-catg,
+.visible-catg {
+    transition: visibility 0.5s linear;
+    visibility: hidden;
+    display: none;
+}
+
+.visible-catg {
+    visibility: visible;
+    display: block;
 }
 
 .object-link {
-	text-align: left;
+    text-align: left;
 }
 
 .alert-msg {
-	position: fixed;
-	top: 2vh;
-	font-size: 3vh;
-	color: rgb(200, 0, 0);
-	z-index: 10003;
+    position: fixed;
+    top: 2vh;
+    font-size: 3vh;
+    color: rgb(200, 0, 0);
+    z-index: 10003;
 }
+
+
 /* ----------------------------------------------------------------------------------------------------- */
+
+
 /* ---------------------------------- FIN DE GESTION DES DESCRIPTIONS ---------------------------------- */
+
+
 /* ----------------------------------------------------------------------------------------------------- */
 
 
-
-
-
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
+
 /* ---------------------------------- GESTION DE LA TOOLBOX ---------------------------------- */
+
+
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+
 #tool-box {
-	position: fixed;
-	width: 100%;
-	bottom: 0;
-	left: 0;
-	font-size: 3vh;
-	z-index: 10002;
-	padding: 1vh;
-	text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    font-size: 3vh;
+    z-index: 10002;
+    padding: 1vh;
+    text-align: center;
 }
 
 #tools {
-	display: inline-block;
-	text-align: center;
-	width: 65%;
+    display: inline-block;
+    text-align: center;
+    width: 65%;
 }
 
 .tool-group {
-	display: inline;
-	margin-left: 10px;
-	margin-right: 10px;
+    display: inline;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .tool {
-	color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.4);
 }
 
 .tool:hover {
-	color: rgba(255, 255, 255, 0.8);
-	cursor: pointer;
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
 }
 
 #date-container {
-	text-align: center;
+    text-align: center;
 }
 
 #date {
-	width: 300px;
+    width: 300px;
 }
 
+
 /* -------------------------------------------------------------------------------------------------- */
+
+
 /* ---------------------------------- FIN DE GESTION DE LA TOOLBOX ---------------------------------- */
+
+
 /* -------------------------------------------------------------------------------------------------- */
 
 
+/* -------------------------------------------------------------------------- */
 
-					    /* -------------------------------------------------------------------------- */
-				/* ------------------------------------------------------------------------------------------ */
-				/* ---------------------------------- FIN CSS SOLAR SYSTEM ---------------------------------- */
-				/* ------------------------------------------------------------------------------------------ */
-					    /* -------------------------------------------------------------------------- */
+
+/* ------------------------------------------------------------------------------------------ */
+
+
+/* ---------------------------------- FIN CSS SOLAR SYSTEM ---------------------------------- */
+
+
+/* ------------------------------------------------------------------------------------------ */
+
+
+/* -------------------------------------------------------------------------- */
