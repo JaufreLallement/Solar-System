@@ -45,10 +45,7 @@ MOON_SUN_VECTOR = new DOMElementVector(document.getElementById('moon'), document
  */
 function updateLock() {
     if (FOLLOWED_OBJ) {
-        /*let x = FOLLOWED_OBJ.getCenteredCoords()[0],
-            y = FOLLOWED_OBJ.getCenteredCoords()[1]; 
-        window.scrollTo(x, y);*/
-        FOLLOWED_OBJ.scrollIt();
+        FOLLOWED_OBJ.scrollIt(1000, 'linear', true);
         return true;
     } else {
         return false;
@@ -72,7 +69,7 @@ function toggleFollowInterface(element, state) {
  */
 HTMLElement.prototype.updateFollow = function() {
     if (this) {
-        let element_f = document.getElementById(this.id + '-follow');
+        let element_f = document.getElementById(`${this.id}-follow`);
         if (element_f.className.indexOf('unfollow') === -1) {
             let previous_f = document.getElementsByClassName('unfollow')[0];
             if (previous_f) {
@@ -220,9 +217,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('click', function(e) {
         e.stopPropagation();
         let target_class = e.target.className;
-        if (e.target && (target_class.indexOf('object') !== -1 || target_class.indexOf('object-link') !== -1)) {
+        if (e.target && (target_class.indexOf('object ') !== -1 || target_class.indexOf('object-link') !== -1)) {
             let id = (target_class.indexOf('-link') !== -1) ? target_class.slice(target_class.lastIndexOf(' ') + 1, target_class.lastIndexOf('-link')) : e.target.id.substring(0, e.target.id.length);
-            if (document.getElementById('card-desc').className.includes('faded-in')) document.getElementById('card-desc').fadeOut(500);
             helios.findObj(id).fillCard();
             document.getElementById('card-desc').fadeIn(500);
         }

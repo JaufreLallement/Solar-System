@@ -132,6 +132,8 @@ class System extends CompoundObject {
         let charon = new Moon(pluto, 'Charon', '1.586×10²¹', 606, 'Moon of Pluto', '4.503×10⁹', '4×10⁶', 0.59, 6.387, 6.387, 53, 17536, 0.288, 'None');
 
         let kuiper_belt = new AsteroidBelt('Kuiper-belt', '5.9736×10²³', '9.874×10⁹', 'Debris disk', '4.503×10⁹', 'Pluto, Makemake, Haumea', pluto, null);
+
+        let churyumov = new SystemDirectObject('Churyumov', '9.982×10¹²', '6.6 × 5.7 × 3.3', 'Jupiter-family comet', '4.503×10⁹', 46, 0.001, 0.52, 2352.21, 205, '185.98 - 850.15×10⁶', '?', 'None', helios);
         helios.addOrbitingObj(kuiper_belt);
         return helios;
     }

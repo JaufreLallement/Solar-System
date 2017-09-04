@@ -1042,7 +1042,7 @@ body:active {
 
 /* Période de révolution Tchouri: 207333432sec = 57592.62h = 2399.693j = 342.813s = 78.84m = 6.57a */
 
-#tchouri-container {
+#churyumov-container {
     width: 1700px;
     height: 1700px;
     left: 32%;
@@ -1054,7 +1054,7 @@ body:active {
 
 /* Période de rotation Tchouri:  */
 
-#tchouri {
+#churyumov {
     top: 242px;
     left: 242px;
     width: 14px;
@@ -1092,7 +1092,7 @@ body:active {
     color: rgba(255, 255, 255, 1);
     height: 85vh;
     width: 42vw;
-    background-color: rgba(30, 30, 30, 1);
+    background-color: rgba(33, 34, 39, 1);
     z-index: 10005;
 }
 
@@ -1105,7 +1105,7 @@ body:active {
     line-height: 3vh;
     font-size: 5vh;
     font-weight: lighter;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(227, 57, 0, 0.7);
     cursor: pointer;
     text-align: center;
     border-radius: 100%;
@@ -1113,7 +1113,7 @@ body:active {
 }
 
 .close:hover {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgb(255, 142, 0);
 }
 
 #card-title {
@@ -1170,12 +1170,13 @@ body:active {
 .clickable {
     font-size: 2vh;
     text-decoration: none;
-    color: rgba(0, 128, 255, 1);
+    font-weight: bold;
+    color: rgb(227, 57, 0);
 }
 
 .clickable:hover {
     cursor: pointer;
-    color: rgba(153, 204, 255, 1);
+    color: rgb(255, 142, 0);
     transition: 0.3s;
 }
 

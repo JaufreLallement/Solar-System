@@ -11,18 +11,14 @@
  * Returns the height of the viewport
  * @return {double} : height of the viewport
  */
-function getWindowHeight() {
-    return Math.max(document.documentElement.clientHeight, window.innerHeight);
-}
+function getWindowHeight() { return Math.max(document.documentElement.clientHeight, window.innerHeight) }
 
 
 /**
  * Returns the width of the viewport
  * @return {double} : width of the viewport
  */
-function getWindowWidth() {
-    return Math.max(document.documentElement.clientWidth, window.innerWidth);
-}
+function getWindowWidth() { return Math.max(document.documentElement.clientWidth, window.innerWidth) }
 
 
 /**
@@ -41,36 +37,28 @@ function checkBody() {
  * This function returns the left position of the element relatively to the screen
  * @return {double} : relative left position of the element
  */
-HTMLElement.prototype.getScreenLeft = function() {
-    return this.getBoundingClientRect().left;
-}
+HTMLElement.prototype.getScreenLeft = function() { return this.getBoundingClientRect().left }
 
 
 /**
  * This function returns the top position of the element relatively to the screen
  * @return {double} : relative top position of the element
  */
-HTMLElement.prototype.getScreenTop = function() {
-    return this.getBoundingClientRect().top;
-}
+HTMLElement.prototype.getScreenTop = function() { return this.getBoundingClientRect().top }
 
 
 /**
  * This function returns the left position of a DOM element relatively to the document
  * @return {double} : left position
  */
-HTMLElement.prototype.getLeft = function() {
-    return Math.round(this.getBoundingClientRect().left - document.body.getBoundingClientRect().left);
-}
+HTMLElement.prototype.getLeft = function() { return Math.round(this.getBoundingClientRect().left - document.body.getBoundingClientRect().left) }
 
 
 /**
  * This function returns the top position of a DOM element relatively to the document
  * @return {double} : top position
  */
-HTMLElement.prototype.getTop = function() {
-    return Math.round(this.getBoundingClientRect().top - document.body.getBoundingClientRect().top);
-}
+HTMLElement.prototype.getTop = function() { return Math.round(this.getBoundingClientRect().top - document.body.getBoundingClientRect().top) }
 
 
 /**
@@ -82,7 +70,7 @@ HTMLElement.prototype.getTop = function() {
 HTMLElement.prototype.setPosition = function(x = 0, y = 0) {
     this.style.left = x + 'px';
     this.style.top = y + 'px';
-    return;
+    return `x: ${x}, y: ${y}`;
 }
 
 
@@ -91,9 +79,7 @@ HTMLElement.prototype.setPosition = function(x = 0, y = 0) {
  * @param {Object} element : corresponds to the DOM element on which we want to center the screen
  * @return {double[]} : centered coordinates [x, y]
  */
-HTMLElement.prototype.getCenteredCoords = function() {
-    return [this.getLeft() - window.innerWidth / 2 + this.offsetWidth / 2, this.getTop() - window.innerHeight / 2 + this.offsetHeight / 2];
-}
+HTMLElement.prototype.getCenteredCoords = function() { return [this.getLeft() - window.innerWidth / 2 + this.offsetWidth / 2, this.getTop() - window.innerHeight / 2 + this.offsetHeight / 2] }
 
 
 /**
@@ -101,9 +87,7 @@ HTMLElement.prototype.getCenteredCoords = function() {
  * @param {Object} element : the element of which we want to know the x coordinate of its center
  * @return {double[]} : x coordinate of the center of the element
  */
-HTMLElement.prototype.getCoords = function() {
-    return [this.getLeft() + this.offsetWidth / 2, this.getTop() + this.offsetHeight / 2];
-}
+HTMLElement.prototype.getCoords = function() { return [this.getLeft() + this.offsetWidth / 2, this.getTop() + this.offsetHeight / 2] }
 
 
 /**
@@ -111,10 +95,7 @@ HTMLElement.prototype.getCoords = function() {
  * @param {String} className : class to add to the element
  * @return {String} : classes of the element after the modification
  */
-HTMLElement.prototype.addClass = function(className) {
-    if (this.className.indexOf(className) === -1) this.className += ' ' + className;
-    return this.className;
-}
+HTMLElement.prototype.addClass = function(className) { this.className += (this.className.includes(className)) ? '' : (this.className.length === 0) ? className : ` ${className}` }
 
 
 /**
@@ -122,10 +103,7 @@ HTMLElement.prototype.addClass = function(className) {
  * @param {String} className : class to remove from the element
  * @return {String} : classes of the element after the modification
  */
-HTMLElement.prototype.removeClass = function(className) {
-    if (this.className.indexOf(className) > -1) this.className = this.className.replace(className, '').trim();
-    return this.className;
-}
+HTMLElement.prototype.removeClass = function(className) { if (this.className.includes(className)) this.className = this.className.replace(className, '').trim() }
 
 
 /**
@@ -134,10 +112,7 @@ HTMLElement.prototype.removeClass = function(className) {
  * @param {String} newClass : new class
  * @return {String} : classes of the element after the modification
  */
-HTMLElement.prototype.replaceClass = function(prevClass, newClass) {
-    if (this.className.indexOf(prevClass) > -1) this.className = this.className.replace(prevClass, newClass);
-    return this.className;
-}
+HTMLElement.prototype.replaceClass = function(prevClass, newClass) { if (this.className.includes(prevClass)) this.className = this.className.replace(prevClass, newClass) }
 
 
 /**
@@ -203,7 +178,6 @@ HTMLCollection.prototype.addClassListener = function(event, func, useCapture) {
     for (let element of this) {
         element.addEventListener(event, func, useCapture);
     }
-    return;
 }
 
 
@@ -218,7 +192,6 @@ Array.prototype.addMultipleClassListener = function(event, func, useCapture) {
     for (let className of this) {
         document.getElementsByClassName(className).addClassListener(event, func, useCapture);
     }
-    return;
 }
 
 
@@ -232,7 +205,6 @@ HTMLCollection.prototype.css = function(property, style) {
     for (let element of this) {
         element.style[property] = style;
     }
-    return;
 }
 
 
@@ -249,7 +221,6 @@ HTMLElement.prototype.css3 = function(property, style) {
     this.style["ms" + majProperty] = style;
     this.style["o" + majProperty] = style;
     this.style[property] = style;
-    return;
 }
 
 
@@ -261,9 +232,8 @@ HTMLElement.prototype.css3 = function(property, style) {
  */
 HTMLCollection.prototype.css3 = function(property, style) {
     for (let element of this) {
-        element.css3(property, style);
+        element.css3(property, style)
     }
-    return;
 }
 
 
@@ -271,9 +241,7 @@ HTMLCollection.prototype.css3 = function(property, style) {
  * This function returns the given string with first character in caps.
  * @return {String} : modified string.
  */
-String.prototype.capsFirstLetter = function() {
-    return this.charAt(0).toUpperCase() + this.slice(1);
-}
+String.prototype.capsFirstLetter = function() { return this.charAt(0).toUpperCase() + this.slice(1) }
 
 
 /**
@@ -353,90 +321,40 @@ HTMLElement.prototype.fadeOut = function(duration = 1000) {
  * @param {String} animation : type of animation to use
  * @return : the return will stop the function effect
  */
-HTMLElement.prototype.scrollIt = function(duration = 200, animation = 'linear') {
+HTMLElement.prototype.scrollIt = function(duration = 200, animation = 'linear', centered = false) {
     /**
      * @const {function[]} : available types of animation
      */
-    const animations = {
-        linear(t) {
-            return t;
-        },
-        easeInQuad(t) {
-            return t * t;
-        },
-        easeOutQuad(t) {
-            return t * (2 - t);
-        },
-        easeInOutQuad(t) {
-            return (t < 0.5) ? 2 * t * t : -1 + (4 - 2 * t) * t;
-        },
-        easeInCubic(t) {
-            return t * t * t;
-        },
-        easeOutCubic(t) {
-            return (--t) * t * t + 1;
-        },
-        easeInOutCubic(t) {
-            return (t < 0.5) ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
-        },
-        easeInQuart(t) {
-            return t * t * t * t;
-        },
-        easeOutQuart(t) {
-            return 1 - (--t) * t * t * t;
-        },
-        easeInOutQuart(t) {
-            return (t < 0.5) ? 8 * t * t * t * t : 1 - 8 * (--t) * t * t * t;
-        },
-        easeInQuint(t) {
-            return t * t * t * t * t;
-        },
-        easeOutQuint(t) {
-            return 1 + (--t) * t * t * t * t;
-        },
-        easeInOutQuint(t) {
-            return (t < 0.5) ? 16 * t * t * t * t * t : 1 + 16 * (--t) * t * t * t * t;
-        }
-    };
+    let animations = [
+        linear = t => t,
+        easeInQuad = t => Math.pow(t, 2),
+        easeOutQuad = t => t * (2 - t),
+        easeInOutQuad = t => (t < 0.5) ? 2 * t * t : -1 + (4 - 2 * t) * t
+    ];
 
+    const body = checkBody(),
+        startH = body.scrollTop,
+        startW = body.scrollLeft,
+        startTime = Date.now(),
+        documentHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight),
+        documentWidth = Math.max(document.body.scrollLeft, document.body.offsetWidth, document.documentElement.clientWidth, document.documentElement.scrollWidth, document.documentElement.offsetWidth),
+        windowHeight = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight,
+        windowWidth = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth,
+        elementT = (centered) ? this.getCenteredCoords()[1] : this.getTop(),
+        elementL = (centered) ? this.getCenteredCoords()[0] : this.getLeft();
 
-    /**
-     * @const {HTMLCollection} body : HTMLCollection based on the checkBody function
-     */
-    const body = checkBody();
-
-    /**
-     * @const {double} start : current scrollTop
-     */
-    const start = body.scrollTop;
-
-    /**
-     * @const {Date} startTime : current time
-     */
-    const startTime = Date.now();
-
-    /**
-     * @const {double} documentHeight : height of the document
-     */
-    const documentHeight = Math.max(document.body.scrollHeight, document.body.offsetHeight, document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight);
-
-    /**
-     * @const {double} windowHeight : 
-     */
-    const windowHeight = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight;
-
-    /**
-     * @const {double} destination : top position of the target
-     */
-    const destination = documentHeight - this.getTop() < windowHeight ? documentHeight - windowHeight : this.getTop();
+    const destinationH = documentHeight - this.getTop() < windowHeight ? documentHeight - windowHeight : elementT,
+        destinationW = documentWidth - this.getLeft() < windowWidth ? documentWidth - windowWidth : elementL;
 
     function scroll() {
-        const now = Date.now();
-        const time = Math.min(1, ((now - startTime) / duration));
-        const timeFunction = animations[animation](time);
-        body.scrollTop = (timeFunction * (destination - start)) + start;
+        const now = Date.now(),
+            time = Math.min(1, ((now - startTime) / duration)),
+            timeFunction = animations.find(func => { return func.name === animation })(time);
 
-        if ((Math.round(body.scrollTop) === destination) || ((now - startTime) > (duration + 100))) {
+        body.scrollTop = (timeFunction * (destinationH - startH)) + startH;
+        body.scrollLeft = (timeFunction * (destinationW - startW)) + startW;
+
+        if ((Math.round(body.scrollTop) === destinationH && Math.round(body.scrollLeft) === destinationW) || ((now - startTime) > (duration + 100))) {
             return;
         }
         requestAnimationFrame(scroll);

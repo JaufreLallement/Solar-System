@@ -38,7 +38,7 @@ class SimpleObject extends AstronomicalObject {
     set atmosphere(atmosphere) { this._atmosphere = atmosphere }
 
     /* ################################ Methods ################################ */
-    parent() { return (this.constructor.name === 'Moon') ? this.planet : (this.constructor.name === 'Planet') ? this.system.center : null }
+    parent() { return (this.constructor.name === 'Moon') ? this.planet : (this.constructor.name === 'Planet' || this.constructor.name === 'SystemDirectObject') ? this.system.center : null }
 
     rotationH() { return Math.round((this._rotationPeriod * 24) * 100) / 100 }
 
@@ -48,13 +48,14 @@ class SimpleObject extends AstronomicalObject {
         super.fillCard();
         document.getElementById('area-data').innerHTML = this._area;
         document.getElementById('escape-data').innerHTML = this._escapeVelocity;
-        document.getElementById('rotation-data').innerHTML = `${this.rotationH()} hours / ${this._rotationPeriod} days`;
-        document.getElementById('revolution-data').innerHTML = `${this._revolutionPeriod} days / ${this.revolutionY()} years`;
+        document.getElementById('rotation-data').innerHTML = `${this.rotationH()} hours / ${this._rotationPeriod}`;
+        document.getElementById('revolution-data').innerHTML = `${this._revolutionPeriod} days / ${this.revolutionY()}`;
         document.getElementById('avgT-data').innerHTML = this._avgT;
         document.getElementById('parent-data').innerHTML = (this.constructor.name === 'Star') ? 'Sagittarius A*' : this.parent().link();
         document.getElementById('distance-data').innerHTML = this._distanceToParent;
         document.getElementById('gravity-data').innerHTML = this._gravity;
         document.getElementById('atmosphere-data').innerHTML = this._atmosphere;
         document.getElementById('simple-catg').replaceClass('hidden-catg', 'visible-catg');
+        document.getElementsByClassName('fillfollow')[0].replaceClass('faded-out', 'faded-in');
     }
 }

@@ -20,5 +20,6 @@ class CompoundObject extends AstronomicalObject {
         super.fillCard();
         document.getElementById('main-data').innerHTML = this._mainObjects;
         document.getElementById('compound-catg').replaceClass('hidden-catg', 'visible-catg');
+        document.getElementsByClassName('fillfollow')[0].replaceClass('faded-in', 'faded-out');
     }
 }
